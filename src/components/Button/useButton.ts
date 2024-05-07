@@ -21,19 +21,19 @@ export function useButton({
     isFullWidth ? styles.button__fullWidth : '',
   ].join(' ');
 
-  //   ! Убрать хардкод типизации
   const buttonStyle = {
     '--button-color': parseColor(color),
   } as React.CSSProperties;
 
   const mergedClassNames = mergeClass(defaultClassNames, className);
-
+  const disabled = isDisabled || isLoading;
 
   return {
     ...rest,
     className: mergedClassNames,
     style: buttonStyle,
+    'aria-disabled': disabled,
     isLoading,
-    disabled: isDisabled || isLoading,
+    disabled,
   };
 }

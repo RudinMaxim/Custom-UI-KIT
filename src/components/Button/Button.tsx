@@ -1,3 +1,4 @@
+import { colors } from '@/constants/colors';
 import { parseColor } from '@/utils/parseColor';
 import { ComponentProps } from 'react';
 import styles from './Button.module.scss';
@@ -18,14 +19,14 @@ interface ButtonProps extends ComponentProps<'button'> {
   // rightIcon?: ReactNode;
 }
 
-// TODO Сделать чтобы можно было выбрать цвет по названию
+// TODO Вынести в хук
 // ! Исправить ошибку --button-color
 
 export function Button({
   children,
   variant = 'solid',
   size = 'md',
-  color = '#000',
+  color = colors.black,
   isLoading = false,
   isDisabled = false,
   isFullWidth = false,

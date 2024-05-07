@@ -1,3 +1,4 @@
+import { mergeClass } from '@/utils/mergeClass';
 import { colors } from '../constants/colors';
 import { parseColor } from '../utils/parseColor';
 
@@ -46,5 +47,50 @@ describe('parseColor', () => {
   test('returns custom default color', () => {
     expect(parseColor(undefined, '#ffffff')).toBe('#ffffff');
     expect(parseColor('invalid', '#cccccc')).toBe('#cccccc');
+  });
+});
+
+describe('mergeClass', () => {
+  it('should return an empty string when no arguments are provided', () => {
+    const result = mergeClass();
+    expect(result).toBe('');
+  });
+
+  it('should return the same string when a single string is provided', () => {
+    const className = 'test-class';
+    const result = mergeClass(className);
+    expect(result).toBe(className);
+  });
+
+  it('should merge multiple strings into a single string separated by spaces', () => {
+    const className1 = 'class1';
+    const className2 = 'class2';
+    const className3 = 'class3';
+    const result = mergeClass(className1, className2, className3);
+    expect(result).toBe('class1 class2 class3');
+  });
+
+  it('should filter out undefined values', () => {
+    const className1 = 'class1';
+    const className2 = undefined;
+    const className3 = 'class3';
+    const result = mergeClass(className1, className2, className3);
+    expect(result).toBe('class1 class3');
+  });
+
+  it('should handle a mix of string and undefined values', () => {
+    const className1 = 'class1';
+    const className2 = undefined;
+    const className3 = 'class3';
+    const className4 = undefined;
+    const className5 = 'class5';
+    const result = mergeClass(
+      className1,
+      className2,
+      className3,
+      className4,
+      className5
+    );
+    expect(result).toBe('class1 class3 class5');
   });
 });

@@ -1,52 +1,25 @@
-import { colors } from '@/constants/colors';
-import { parseColor } from '@/utils/parseColor';
 import { ComponentProps } from 'react';
-import styles from './Button.module.scss';
+import { useButton } from './useButton';
 
 type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link';
-
 type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
-interface ButtonProps extends ComponentProps<'button'> {
+export interface ButtonProps extends ComponentProps<'button'> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   color?: string;
   isLoading?: boolean;
   isDisabled?: boolean;
   isFullWidth?: boolean;
-  // className?: string;
+  className?: string;
   // leftIcon?: ReactNode;
   // rightIcon?: ReactNode;
 }
 
-// TODO Вынести в хук
-// ! Исправить ошибку --button-color
-
-export function Button({
-  children,
-  variant = 'solid',
-  size = 'md',
-  color = colors.black,
-  isLoading = false,
-  isDisabled = false,
-  isFullWidth = false,
-  ...props
-}: ButtonProps) {
-  const classNames = [
-    styles.button,
-    styles[`button__${variant}`],
-    styles[`button__${size}`],
-    isFullWidth ? styles.button__fullWidth : '',
-  ].join(' ');
+export function Button(props: ButtonProps) {
+  const { children, isLoading, ...buttonProps } = useButton(props);
 
   return (
-    <button
-      className={classNames}
-      style={{ '--button-color': parseColor(color) }}
-      disabled={isDisabled || isLoading}
-      {...props}
-    >
-      {isLoading ? 'Loading...' : children}
-    </button>
+    <button {...buttonProps}>{isLoading ? 'Loading...' : children}</button>
   );
 }

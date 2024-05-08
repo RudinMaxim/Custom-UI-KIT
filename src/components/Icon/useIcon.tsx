@@ -1,4 +1,3 @@
-
 import { IconMap, colors } from '@/constants';
 import { parseColor } from '@/utils/parseColor';
 import React from 'react';
@@ -7,7 +6,17 @@ import { IconProps } from './Icon';
 export function useIcon(props: IconProps) {
   const { name, color = colors.black, size = 24, ...rest } = props;
 
-  const iconComponent = () => {
+  const getButtonStyle = (props: IconProps) => {
+    const { color } = props;
+    return {
+      width: size,
+      height: size,
+      fill: parseColor(color),
+      ...props.style,
+    };
+  };
+
+  const getButtonContent = (): JSX.Element | null => {
     if (!IconMap[name]) {
       console.error(`Icon not found: ${name}`);
       return null;
@@ -16,16 +25,9 @@ export function useIcon(props: IconProps) {
     return React.createElement(IconMap[name], { size, color });
   };
 
-  const iconStyle = {
-    width: size,
-    height: size,
-    fill: parseColor(color),
-    ...rest.style,
-  };
-
   return {
     ...rest,
-    children: iconComponent(),
-    style: iconStyle,
+    children: getButtonContent(),
+    style: getButtonStyle(props),
   };
 }

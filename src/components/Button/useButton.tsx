@@ -25,7 +25,7 @@ export function useButton(props: ButtonProps) {
     };
   };
 
-  const getContent = (props: ButtonProps): JSX.Element => {
+  const getButtonContent = (props: ButtonProps): JSX.Element => {
     const { isLoading, icon, iconPosition, children, color } = props;
 
     if (isLoading) {
@@ -53,7 +53,7 @@ export function useButton(props: ButtonProps) {
 
   return {
     ...props,
-    children: getContent(props),
+    children: getButtonContent(props),
     className: getButtonClasses(props),
     style: getButtonStyle(props),
     disabled: props.isDisabled || props.isLoading,

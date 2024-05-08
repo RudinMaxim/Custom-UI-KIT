@@ -12,6 +12,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
   isDisabled?: boolean;
   isFullWidth?: boolean;
   className?: string;
+  style?: React.CSSProperties;
   // icon?: React.ReactNode;
   // leftIcon?: ReactNode;
   // rightIcon?: ReactNode;
@@ -29,6 +30,6 @@ export function Button(props: ButtonProps) {
   const { children, isLoading, disabled, ...buttonProps } = useButton(props);
 
   return (
-    <button {...buttonProps}>{isLoading ? 'Loading...' : children}</button>
+    <button {...buttonProps}>{children}</button>
   );
 }

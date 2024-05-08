@@ -1,12 +1,15 @@
 import { colors } from '@/constants/colors';
 import { mergeClass } from '@/utils/mergeClass';
 import { parseColor } from '@/utils/parseColor';
+import { Loader } from '..';
 import { ButtonProps } from './Button';
 import styles from './Button.module.scss';
 
 export function useButton({
   variant = 'solid',
   className,
+  style,
+  children,
   size = 'md',
   color = colors.black,
   isLoading = false,
@@ -22,6 +25,7 @@ export function useButton({
   ].join(' ');
 
   const buttonStyle = {
+    ...style,
     '--button-color': parseColor(color),
   } as React.CSSProperties;
 
@@ -30,6 +34,7 @@ export function useButton({
 
   return {
     ...rest,
+    children: isLoading ? <Loader color={colors.white} size='sm'/> : children,
     className: mergedClassNames,
     style: buttonStyle,
     'aria-disabled': disabled,

@@ -1,0 +1,11 @@
+@import './reset.scss';
+
+:root {
+  --border-radius-xs: 0.125rem;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+
+  --transition: 0.3s ease-in-out;
+  --box-shadow: 0px 10px 30px 0px rgba(50, 87, 164, 0.1);
+}

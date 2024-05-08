@@ -1,0 +1,93 @@
+@import '../../styles/globals.scss';
+
+.button__box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease-in-out;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-size: 1rem;
+  color: var(--button-content-color);
+
+  /* Size variants */
+  &__xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius-xs);
+  }
+
+  &__sm {
+    padding: 0.5rem 1rem;
+    font-size: 1.15rem;
+    border-radius: var(--border-radius-sm);
+  }
+
+  &__md {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  &__lg {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-lg);
+  }
+
+  /* Full width variant */
+  &__fullWidth {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Disabled variant */
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Button variants */
+  &__solid {
+    background-color: var(--button-background-color);
+    border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__outline {
+    background-color: transparent;
+    border: 1px solid var(--button-content-color);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  &__ghost {
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+    color: var(--button-content-color);
+    border: none;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}

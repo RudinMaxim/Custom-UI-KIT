@@ -1,8 +1,17 @@
 {
-  "name": "custom-ui-kit",
-  "private": true,
-  "version": "0.0.0",
+  "name": "rukit",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/react-rukit-umd.cjs",
+  "module": "dist/react-rukit.js",
+  "exports": {
+    "import": "./dist/react-rukit.js",
+    "require": "./dist/react-rukit-umd.cjs"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,11 +23,11 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.3.3",
+    "vite-tsconfig-paths": "^4.3.2",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@storybook/addon-essentials": "^8.0.10",
@@ -52,7 +61,8 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1"
   },
   "husky": {
     "hooks": {

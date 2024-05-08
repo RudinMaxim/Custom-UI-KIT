@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, forwardRef } from 'react';
 import { IconProps } from '../Icon/Icon';
 import { useButton } from './useButton';
 
@@ -17,15 +17,21 @@ export interface ButtonProps extends ComponentProps<'button'> {
   // TODO: Add aria attributes (e.g., aria-label)
 }
 
-export function Button(props: ButtonProps) {
-  const {
-    children,
-    isLoading,
-    isDisabled,
-    iconPosition,
-    isFullWidth,
-    ...buttonProps
-  } = useButton(props);
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref) => {
+    const {
+      children,
+      isLoading,
+      isDisabled,
+      iconPosition,
+      isFullWidth,
+      ...buttonProps
+    } = useButton(props);
 
-  return <button {...buttonProps}>{children}</button>;
-}
+    return (
+      <button ref={ref} {...buttonProps}>
+        {children}
+      </button>
+    );
+  }
+);

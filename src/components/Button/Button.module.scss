@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  border-radius: var(--border-radius);
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -21,7 +20,6 @@
 .button__fullWidth {
   max-width: 100%;
   width: 100%;
-  display: block;
   box-sizing: border-box;
 }
 
@@ -73,19 +71,23 @@
 .button__xs {
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
+  border-radius: var(--border-radius-xs);
 }
 
 .button__sm {
   padding: 0.5rem 1rem;
   font-size: 1.15rem;
+  border-radius: var(--border-radius-sm);
 }
 
 .button__md {
   padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
+  border-radius: var(--border-radius-md);
 }
 
 .button__lg {
   padding: 1rem 2rem;
   font-size: 1.5rem;
+  border-radius: var(--border-radius-lg);
 }

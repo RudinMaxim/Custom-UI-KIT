@@ -10,6 +10,8 @@ export function useButton({
   className,
   style,
   children,
+  icon,
+  iconPosition = 'left',
   size = 'md',
   color = colors.black,
   isLoading = false,
@@ -32,9 +34,19 @@ export function useButton({
   const mergedClassNames = mergeClass(defaultClassNames, className);
   const disabled = isDisabled || isLoading;
 
+  const content = isLoading ? (
+    <Loader color={colors.white} size="sm" />
+  ) : (
+    <>
+      {iconPosition === 'left' && icon}
+      {children}
+      {iconPosition === 'right' && icon}
+    </>
+  );
+
   return {
     ...rest,
-    children: isLoading ? <Loader color={colors.white} size='sm'/> : children,
+    children: content,
     className: mergedClassNames,
     style: buttonStyle,
     'aria-disabled': disabled,

@@ -1,15 +1,8 @@
-import { colors } from '@/constants/colors';
-import { IconMap } from '@/constants/IconMap';
+
+import { IconMap, colors } from '@/constants';
 import { parseColor } from '@/utils/parseColor';
 import React from 'react';
-
-export interface IconProps {
-  name: string;
-  color?: string;
-  size?: number;
-  className?: string;
-  style?: React.CSSProperties;
-}
+import { IconProps } from './Icon';
 
 export function useIcon(props: IconProps) {
   const { name, color = colors.black, size = 24, ...rest } = props;

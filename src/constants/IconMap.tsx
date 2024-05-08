@@ -5,7 +5,7 @@ export type IconComponent = React.FC<{ size?: number; color?: string }>;
 export interface IconMap {
   [iconName: string]: IconComponent;
 }
-
+// https://fonts.google.com/icons
 export const IconMap: IconMap = {
   search: () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">

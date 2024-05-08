@@ -1,3 +1,4 @@
+import { colors } from '@/constants';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button';
 
@@ -26,6 +27,13 @@ const meta: Meta<typeof Button> = {
     isFullWidth: {
       control: 'boolean',
     },
+    icon: {
+      control: 'object',
+    },
+    iconPosition: {
+      control: 'inline-radio',
+      options: ['left', 'right'],
+    }
   },
 };
 
@@ -106,5 +114,15 @@ export const FullWidthButton: Story = {
   args: {
     children: 'Full Width Button',
     isFullWidth: true,
+  },
+};
+export const ButtonWithIcon: Story = {
+  args: {
+    icon: {
+      name: 'search',
+      size: 24,
+      color: colors.white,
+    },
+    iconPosition: 'right',
   },
 };

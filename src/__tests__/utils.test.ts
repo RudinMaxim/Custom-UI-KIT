@@ -1,6 +1,6 @@
-import { mergeClass } from '@/utils/mergeClass';
-import { colors } from '../constants/colors';
-import { parseColor } from '../utils/parseColor';
+import { colors } from "@/constants";
+import { mergeClass, parseColor } from "@/utils";
+
 
 describe('parseColor', () => {
   test('returns default color when input is undefined', () => {

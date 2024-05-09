@@ -1,6 +1,5 @@
-import { colors } from '@/constants';
+import { Button, ButtonGroup } from '@/components/Button/Button';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../../components/Button/Button';
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -61,89 +60,89 @@ export const Default: Story = {
   },
 };
 
-export const Solid: Story = {
-  args: {
-    children: 'Solid Button',
-    variant: 'solid',
-  },
+export const Variants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Button variant="solid">Solid Button</Button>
+      <Button variant="outline">Outline Button</Button>
+      <Button variant="ghost">Ghost Button</Button>
+    </div>
+  ),
 };
 
-export const Outline: Story = {
-  args: {
-    children: 'Outline Button',
-    variant: 'outline',
-  },
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Button size="xs">XSmall Button</Button>
+      <Button size="sm">Small Button</Button>
+      <Button size="md">Medium Button</Button>
+      <Button size="lg">Large Button</Button>
+    </div>
+  ),
 };
 
-export const Ghost: Story = {
-  args: {
-    children: 'Ghost Button',
-    variant: 'ghost',
-  },
+export const Colors: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Button color="tomato">Named Color (tomato)</Button>
+      <Button color="#ff6347">Hexadecimal Color (#ff6347)</Button>
+      <Button color="rgb(255, 99, 71)">RGB Color (rgb(255, 99, 71))</Button>
+      <Button color="rgba(255, 99, 71, 0.5)">
+        RGBA Color (hsl(9, 100%, 64%))
+      </Button>
+      <Button color="hsl(9, 100%, 64%)">HSL Color (hsl(9, 100%, 64%))</Button>
+      <Button color="hsla(9, 100%, 64%, 0.5)">
+        HSLA Color (hsla(9, 100%, 64%, 0.5))
+      </Button>
+    </div>
+  ),
 };
 
-export const XSmall: Story = {
-  args: {
-    children: 'XSmall Button',
-    size: 'xs',
-  },
+export const States: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Button isLoading>Loading Button</Button>
+      <Button isDisabled>Disabled Button</Button>
+      <Button isFullWidth>Full Width Button</Button>
+    </div>
+  ),
 };
 
-export const Small: Story = {
-  args: {
-    children: 'Small Button',
-    size: 'sm',
-  },
+export const WithIcon: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <Button icon={{ name: 'search', size: 24 }}>Button with Icon</Button>
+      <Button icon={{ name: 'search', size: 24 }} iconPosition="left">
+        Icon on Left
+      </Button>
+      <Button icon={{ name: 'search', size: 24 }} iconPosition="right">
+        Icon on Right
+      </Button>
+      <Button icon={{ name: 'search', size: 24 }} />
+    </div>
+  ),
 };
 
-export const Large: Story = {
-  args: {
-    children: 'Large Button',
-    size: 'lg',
-  },
-};
-
-export const ColoredButton: Story = {
-  args: {
-    children: 'Colored Button',
-    color: '#ff6347', // tomato
-  },
-};
-
-export const LoadingButton: Story = {
-  args: {
-    children: 'Loading Button',
-    isLoading: true,
-    color: colors.aqua,
-    size: 'md',
-    icon: {
-      name: 'loading',
-      size: 24,
-      color: colors.white,
-    },
-  },
-};
-
-export const DisabledButton: Story = {
-  args: {
-    children: 'Disabled Button',
-    isDisabled: true,
-  },
-};
-
-export const FullWidthButton: Story = {
-  args: {
-    children: 'Full Width Button',
-    isFullWidth: true,
-  },
-};
-export const ButtonWithIcon: Story = {
-  args: {
-    icon: {
-      name: 'search',
-      size: 24,
-      color: colors.aqua,
-    },
-    iconPosition: 'right',
-  },
+export const ButtonGroups: Story = {
+  render: () => (
+    <>
+      <ButtonGroup>
+        <Button>Button 1</Button>
+        <Button>Button 2</Button>
+        <Button>Button 3</Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup variant="outline">
+        <Button variant="outline">Outline 1</Button>
+        <Button variant="outline">Outline 2</Button>
+        <Button variant="outline">Outline 3</Button>
+      </ButtonGroup>
+      <br />
+      <ButtonGroup size="lg" isAttached>
+        <Button size="lg">Large 1</Button>
+        <Button size="lg">Large 2</Button>
+        <Button size="lg">Large 3</Button>
+      </ButtonGroup>
+    </>
+  ),
 };

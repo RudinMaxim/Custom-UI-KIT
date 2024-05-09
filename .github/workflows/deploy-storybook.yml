@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
       - name: Install and Build 🔧
         run: |
-          npm install
+          npm ci
           npm run build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2
@@ -30,3 +30,11 @@ jobs:
           FOLDER: docs-build
           CLEAN: true
           TARGET_FOLDER: docs
+          
+      - name: Change working directory
+        run: cd /path/to/your/jekyll/site
+        shell: bash
+
+      # Run Jekyll build command
+      - name: Build Jekyll site
+        run: bundle exec jekyll build

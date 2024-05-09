@@ -1,5 +1,6 @@
 import { colors } from '@/constants';
 import { contrastingColor, mergeClass, parseColor } from '@/utils';
+import React from 'react';
 import { Icon, Loader } from '../index';
 import { ButtonProps } from './Button';
 import styles from './Button.module.scss';
@@ -25,7 +26,7 @@ export function useButton(props: ButtonProps) {
     };
   };
 
-  const getButtonContent = (props: ButtonProps): JSX.Element => {
+  const getButtonContent = (props: ButtonProps): React.JSX.Element => {
     const { isLoading, icon, iconPosition, children, color } = props;
 
     if (isLoading) {

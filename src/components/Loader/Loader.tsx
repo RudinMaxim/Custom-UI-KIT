@@ -1,5 +1,5 @@
 import { colors } from '@/constants/colors';
-import { ComponentProps } from 'react';
+import React, { ComponentProps } from 'react';
 import { useLoader } from './useLoader';
 
 type LoaderSize = 'xs' | 'sm' | 'md' | 'lg';
@@ -20,7 +20,7 @@ export const Loader: React.FC<LoaderProps> = ({
   color = colors.black,
   className,
   style,
-}) => {
+}): React.JSX.Element => {
   const preps = useLoader({
     variant,
     size,

@@ -28,7 +28,7 @@ export function parseColor(
 
   // Check if the color is a named color
   const colorKey = color.toLowerCase();
-  if (colors.hasOwnProperty(colorKey)) {
+  if (colorKey in colors) {
     return colors[colorKey as keyof typeof colors];
   }
 

@@ -1,4 +1,4 @@
-import { ComponentProps, forwardRef } from 'react';
+import React, { ComponentProps, forwardRef } from 'react';
 import { IconProps } from '../Icon/Icon';
 import { useButton } from './useButton';
 
@@ -18,15 +18,8 @@ export interface ButtonProps extends ComponentProps<'button'> {
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      children,
-      isLoading,
-      isDisabled,
-      iconPosition,
-      isFullWidth,
-      ...buttonProps
-    } = useButton(props);
+  (props, ref): React.JSX.Element => {
+    const { children, ...buttonProps } = useButton(props);
 
     return (
       <button ref={ref} {...buttonProps}>
@@ -35,3 +28,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   }
 );
+Button.displayName = 'Button';

@@ -1,7 +1,7 @@
 import { IconMap } from '@/constants/IconMap';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ReactSVGElement } from 'react';
-import { Icon } from './Icon';
+import { Icon } from '../components/Icon/Icon';
 
 const iconNames = Object.keys(IconMap);
 

@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import React, { ComponentProps } from 'react';
 import { useIcon } from './useIcon';
 
 export interface IconProps extends ComponentProps<'span'> {

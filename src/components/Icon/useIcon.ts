@@ -4,21 +4,18 @@ import React from 'react';
 import { IconProps } from './Icon';
 
 export function useIcon(props: IconProps) {
-  const { name, customIcon, ...rest } = props;
+  const { name, customIcon, color, size = 24, ...rest } = props;
 
-  const getIconStyle = (props: IconProps) => {
-    const { color, size = 24 } = props;
+  const getIconStyle = () => {
     return {
       width: size,
       height: size,
       fill: parseColor(color),
-      ...props.style,
+      ...rest.style,
     };
   };
 
-  const getIconContent = (props: IconProps): JSX.Element | null => {
-    const { name, size = 24, color, customIcon } = props;
-
+  const getIconContent = (): JSX.Element | null => {
     if (customIcon && React.isValidElement(customIcon)) {
       return customIcon;
     }
@@ -33,7 +30,7 @@ export function useIcon(props: IconProps) {
 
   return {
     ...rest,
-    children: getIconContent(props),
-    style: getIconStyle(props),
+    children: getIconContent(),
+    style: getIconStyle(),
   };
 }

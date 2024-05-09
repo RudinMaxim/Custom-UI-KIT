@@ -3,13 +3,21 @@ name: Deploy Storybook
 on:
   push:
     branches: [main]
+    paths: ['src/stories/**', 'src/components/**']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy-storybook:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
+      # Manual Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # Set up Node.js
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:

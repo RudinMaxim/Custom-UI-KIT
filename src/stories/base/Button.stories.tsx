@@ -1,10 +1,10 @@
 import { colors } from '@/constants';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../components/Button/Button';
+import { Button } from '../../components/Button/Button';
 
 const meta: Meta<typeof Button> = {
   component: Button,
-  title: 'Components/Button',
+  title: 'base/Button',
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -121,7 +121,7 @@ export const ButtonWithIcon: Story = {
     icon: {
       name: 'search',
       size: 24,
-      color: colors.white,
+      color: colors.aqua,
     },
     iconPosition: 'right',
   },

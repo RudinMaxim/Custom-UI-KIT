@@ -7,33 +7,45 @@ const meta: Meta<typeof Button> = {
   title: 'base/Button',
   tags: ['autodocs'],
   argTypes: {
+    children: {
+      control: 'text',
+      description: 'The text inside the button',
+    },
     variant: {
       control: 'select',
+      description: 'The variant of the button',
       options: ['solid', 'outline', 'ghost'],
     },
     size: {
       control: 'select',
+      description: 'The size of the button',
       options: ['xs', 'sm', 'md', 'lg'],
     },
     color: {
       control: 'color',
+      description: 'The color of the button',
     },
     isLoading: {
       control: 'boolean',
+      description: 'Whether the button is in loading state',
     },
     isDisabled: {
       control: 'boolean',
+      description: 'Whether the button is disabled',
     },
     isFullWidth: {
       control: 'boolean',
+      description: 'Whether the button is full width',
     },
     icon: {
       control: 'object',
+      description: 'The icon to display on the button',
     },
     iconPosition: {
-      control: 'inline-radio',
+      control: 'select',
+      description: 'The position of the icon on the button',
       options: ['left', 'right'],
-    }
+    },
   },
 };
 
@@ -44,6 +56,8 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: 'Button',
+    size: 'md',
+    variant: 'solid',
   },
 };
 
@@ -100,6 +114,13 @@ export const LoadingButton: Story = {
   args: {
     children: 'Loading Button',
     isLoading: true,
+    color: colors.aqua,
+    size: 'md',
+    icon: {
+      name: 'loading',
+      size: 24,
+      color: colors.white,
+    },
   },
 };
 

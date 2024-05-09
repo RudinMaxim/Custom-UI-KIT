@@ -1,4 +1,5 @@
-import React, { ComponentProps, forwardRef } from 'react';
+import { colors } from '@/constants';
+import React, { ComponentProps } from 'react';
 import { IconProps } from '../Icon/Icon';
 import { useButton } from './useButton';
 
@@ -17,15 +18,28 @@ export interface ButtonProps extends ComponentProps<'button'> {
   // TODO: Add aria attributes (e.g., aria-label)
 }
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref): React.JSX.Element => {
-    const { children, ...buttonProps } = useButton(props);
+export function Button({
+  color = colors.black,
+  variant = 'solid',
+  size = 'sm',
+  isLoading = false,
+  isDisabled = false,
+  isFullWidth = false,
+  iconPosition = 'left',
+  ...props
+}: ButtonProps): React.JSX.Element {
+  const {
+    children,
+    ...buttonProps
+  } = useButton({
+    variant,
+    color,
+    size,
+    isLoading,
+    isDisabled,
+    isFullWidth,
+    ...props,
+  });
 
-    return (
-      <button ref={ref} {...buttonProps}>
-        {children}
-      </button>
-    );
-  }
-);
-Button.displayName = 'Button';
+  return <button {...buttonProps}>{children}</button>;
+}

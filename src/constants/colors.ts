@@ -142,7 +142,7 @@ export const colors = {
 };
 
 export const contrastColors = {
-  aliceblue: '#0F0F0F',
+  aliceblue: '#000',
   antiquewhite: '#0F0F0F',
   aqua: '#0F0F0F',
   aquamarine: '#0F0F0F',

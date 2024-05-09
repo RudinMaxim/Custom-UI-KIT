@@ -15,6 +15,7 @@ export function useIcon(props: IconProps) {
     };
   };
 
+
   const getIconContent = (): JSX.Element | null => {
     if (customIcon && React.isValidElement(customIcon)) {
       return customIcon;

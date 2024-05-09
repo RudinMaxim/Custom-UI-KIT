@@ -1,4 +1,3 @@
-import { colors } from '@/constants';
 import { contrastingColor, mergeClass, parseColor } from '@/utils';
 import React from 'react';
 import { Icon, Loader } from '../index';
@@ -6,8 +5,21 @@ import { ButtonProps } from './Button';
 import styles from './Button.module.scss';
 
 export function useButton(props: ButtonProps) {
-  const getButtonClasses = (props: ButtonProps): string => {
-    const { variant = 'solid', size = 'md', isFullWidth, className } = props;
+  const {
+    children,
+    variant,
+    size,
+    color,
+    isLoading,
+    isDisabled,
+    isFullWidth,
+    className,
+    icon,
+    iconPosition = 'left',
+    ...rest
+  } = props;
+
+  const getButtonClasses = (): string => {
     return mergeClass(
       styles.button,
       styles[`button__${variant}`],
@@ -17,46 +29,43 @@ export function useButton(props: ButtonProps) {
     );
   };
 
-  const getButtonStyle = (props: ButtonProps) => {
+  const contrasting =
+    variant === 'solid'
+      ? contrastingColor(parseColor(color))
+      : parseColor(color);
+
+  const getButtonStyle = () => {
     const { color } = props;
     return {
-      ...props.style,
-      '--button-content-color': contrastingColor(parseColor(color)),
+      '--button-content-color': contrasting,
       '--button-background-color': parseColor(color),
+      ...props.style,
     };
   };
 
-  const getButtonContent = (props: ButtonProps): React.JSX.Element => {
-    const { isLoading, icon, iconPosition, children, color } = props;
-
+  const getButtonContent = (): React.JSX.Element => {
     if (isLoading) {
-      return <Loader color={color ?? colors.white} size="sm" />;
+      return <Loader color={contrasting} size="sm" />;
     }
 
     return (
       <div className={styles.button__box}>
         {iconPosition === 'left' && icon && (
-          <Icon
-            {...icon}
-            color={contrastingColor(props.color ?? colors.white)}
-          />
+          <Icon {...icon} color={contrasting} />
         )}
         {children}
         {iconPosition === 'right' && icon && (
-          <Icon
-            {...icon}
-            color={contrastingColor(props.color ?? colors.white)}
-          />
+          <Icon {...icon} color={contrasting} />
         )}
       </div>
     );
   };
 
   return {
-    ...props,
-    children: getButtonContent(props),
-    className: getButtonClasses(props),
-    style: getButtonStyle(props),
-    disabled: props.isDisabled || props.isLoading,
+    ...rest,
+    children: getButtonContent(),
+    className: getButtonClasses(),
+    style: getButtonStyle(),
+    disabled: isDisabled || isLoading,
   };
 }

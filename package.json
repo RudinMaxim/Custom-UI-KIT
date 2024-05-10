@@ -3,23 +3,12 @@
   "private": false,
   "version": "0.0.1",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/react-rukit-umd.cjs",
-  "module": "dist/react-rukit.js",
-  "exports": {
-    "import": "./dist/react-rukit.js",
-    "require": "./dist/react-rukit-umd.cjs"
-  },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
     "lint": "tsc --noEmit && eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 && prettier --check . && stylelint \"**/*.scss\"",
     "test": "jest",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o docs-build"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^18.2.0",

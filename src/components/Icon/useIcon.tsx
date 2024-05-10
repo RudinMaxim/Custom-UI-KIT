@@ -1,20 +1,27 @@
 import { IconMap } from '@/constants';
-import { parseColor } from '@/utils';
+import { getClasses, getStyle } from '@/helper';
 import React from 'react';
 import { IconProps } from './Icon';
+import styles from './Icon.module.scss';
 
 export function useIcon(props: IconProps) {
-  const { name, customIcon, color, size = 24, ...rest } = props;
+  const {
+    name,
+    customIcon,
+    color,
+    className: _className,
+    size,
+    ...rest
+  } = props;
 
-  const getIconStyle = () => {
-    return {
-      width: size,
-      height: size,
-      fill: parseColor(color),
-      ...rest.style,
-    };
-  };
+  const style = getStyle({
+    color,
+    width: size,
+    height: size,
+    ...rest.style,
+  });
 
+  const className = getClasses([styles.icon, ...(_className ?? '')]);
 
   const getIconContent = (): JSX.Element | null => {
     if (customIcon && React.isValidElement(customIcon)) {
@@ -32,6 +39,7 @@ export function useIcon(props: IconProps) {
   return {
     ...rest,
     children: getIconContent(),
-    style: getIconStyle(),
+    className,
+    style,
   };
 }

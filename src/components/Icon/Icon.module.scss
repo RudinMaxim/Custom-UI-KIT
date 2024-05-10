@@ -4,14 +4,13 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-
   transition: color 0.2s ease;
 
   svg {
     flex-shrink: 0;
     width: 100%;
     height: 100%;
-    fill: currentColor;
+    fill: currentcolor;
   }
 
   // &__text {

@@ -31,7 +31,7 @@ export function useButton(props: ButtonProps) {
       styles.button,
       styles[`button__${variant}`],
       styles[`button__${size}`],
-      isFullWidth ? styles.button__fullWidth : '',
+      isFullWidth ? styles['button__full-width'] : '',
       // variant === 'link' ? styles.button__link : '',
       className
     );
@@ -76,7 +76,7 @@ export function useButton(props: ButtonProps) {
     }
 
     return (
-      <div className={styles.button__box}>
+      <div className={styles['button-box']}>
         {iconPosition === 'left' && icon && (
           <Icon {...icon} color={contrasting} />
         )}
@@ -103,10 +103,10 @@ export function useButtonGroup(props: ButtonGroupProps) {
 
   const getButtonGroupClasses = (): string => {
     return mergeClass(
-      styles.buttonGroup,
-      styles[`buttonGroup__${variant}`],
-      styles[`buttonGroup__${size}`],
-      isAttached ? styles.buttonGroup__attached : '',
+      styles['button-group'],
+      styles[`button-group__${variant}`],
+      styles[`button-group__${size}`],
+      isAttached ? styles['button__group__attached'] : '',
       className
     );
   };

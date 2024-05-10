@@ -1,4 +1,4 @@
-export type Size = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
+export type Size = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 
 export type WeightRole =
   | 'normal'

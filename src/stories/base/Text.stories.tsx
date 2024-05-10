@@ -43,7 +43,7 @@ export const Default: Story = {
 export const Heading: Story = {
   render: () => (
     <>
-      <Text role="h1" size="extraLarge" fontWeight={'bold'}>
+      <Text role="h1" size="extra-large" fontWeight={'bold'}>
         Heading 1
       </Text>
       <Text role="h2" size="large" fontWeight={'bold'}>
@@ -58,7 +58,7 @@ export const Heading: Story = {
       <Text role="h5" size="small" fontWeight={'bold'}>
         Heading 5
       </Text>
-      <Text role="h6" size="extraSmall" fontWeight={'bold'}>
+      <Text role="h6" size="extra-small" fontWeight={'bold'}>
         Heading 5
       </Text>
     </>

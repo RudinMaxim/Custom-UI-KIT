@@ -50,6 +50,5 @@ export function Text({
     ...rest,
   });
 
-  // @ts-ignore
   return <Element {...TextProps}>{children}</Element>;
 }

@@ -41,10 +41,9 @@ export const getAccessibleAttributes = <T extends React.ElementType>(
     ...otherProps
   } = props;
 
-  // @ts-ignore
   const accessibleProps: React.ComponentProps<T> = {
     ...otherProps,
-  };
+  } as React.ComponentProps<T>;
 
   if (ariaLabel) {
     accessibleProps['aria-label'] = ariaLabel;

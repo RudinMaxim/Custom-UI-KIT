@@ -33,7 +33,7 @@ export function useText(props: TextProps) {
   return {
     ...rest,
     role,
-    Element: (role as keyof JSX.IntrinsicElements) ?? 'div',
+    Element: role ? role : 'span',
     children,
     className,
     style,

@@ -1,10 +1,10 @@
 // Loader.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import { Loader } from '../components/Loader/Loader';
+import { Loader } from '../../components/Loader/Loader';
 
 const meta: Meta<typeof Loader> = {
   component: Loader,
-  title: 'Components/Loader',
+  title: 'components/Loader',
   tags: ['autodocs'],
 };
 

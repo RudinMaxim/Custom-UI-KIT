@@ -15,11 +15,12 @@
     background-color 0.2s ease,
     color 0.2s ease,
     border-color 0.2s ease,
+    opacity 0.2s ease,
     transform 0.2s ease-in-out;
   cursor: pointer;
   touch-action: manipulation;
   font-size: 1rem;
-  color: var(--button-content-color);
+  user-select: none;
 
   /* Size variants */
   &__xs {
@@ -35,13 +36,13 @@
   }
 
   &__md {
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1.5rem;
     font-size: 1.5rem;
     border-radius: var(--border-radius-md);
   }
 
   &__lg {
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     font-size: 1.5rem;
     border-radius: var(--border-radius-lg);
   }
@@ -61,33 +62,158 @@
 
   /* Button variants */
   &__solid {
-    background-color: var(--button-background-color);
     border: none;
     transition: all 0.2s ease-in-out;
+    color: var(--button-content-color);
+    background-color: var(--button-background-color);
 
     &:hover {
-      transform: translateY(-2px);
+      opacity: 0.75;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:focus {
+      outline-color: transparent;
+      outline-style: solid;
+      box-shadow: 0 0 0 4px var(--button-content-color);
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:active {
+      outline-color: transparent;
+      outline-style: solid;
+      box-shadow: 0 0 0 4px gray;
+      transition: all 0.2s ease-in-out;
     }
   }
 
   &__outline {
     background-color: transparent;
-    border: 1px solid var(--button-content-color);
+    border: 1px solid var(--button-background-color);
+    color: var(--button-background-color);
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      transform: translateY(-2px);
+      opacity: 0.75;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:focus {
+      outline-color: transparent;
+      outline-style: solid;
+      box-shadow: 0 0 0 4px var(--button-content-color);
+      transition: all 0.2s ease-in-out;
+    }
+    &:active {
+      
     }
   }
 
   &__ghost {
     background-color: transparent;
     transition: all 0.2s ease-in-out;
-    color: var(--button-content-color);
+    color: var(--button-background-color);
     border: none;
 
     &:hover {
-      transform: translateY(-2px);
+      opacity: 0.75;
+    }
+
+    &:focus {
+      // Стили при фокусе
+    }
+    &:active {
+      // Стили при нажатии
+    }
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 4px;
+
+  > button {
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  &__attached {
+    > button {
+      border-radius: 0;
+
+      &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+    }
+  }
+
+  &__solid {
+    > button {
+      &:not(:first-child) {
+        margin-left: -1px;
+      }
+    }
+  }
+
+  &__outline {
+    > button {
+      &:not(:first-child) {
+        margin-left: -1px;
+      }
+    }
+  }
+
+  &__ghost {
+    > button {
+      &:not(:first-child) {
+        margin-left: -1px;
+      }
+    }
+  }
+
+  // Размеры
+  &__xs {
+    > button {
+      padding: 2px 6px;
+      font-size: 0.75rem;
+    }
+  }
+
+  &__sm {
+    > button {
+      padding: 4px 8px;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__md {
+    > button {
+      padding: 6px 12px;
+      font-size: 1rem;
+    }
+  }
+
+  &__lg {
+    > button {
+      padding: 8px 16px;
+      font-size: 1.125rem;
     }
   }
 }

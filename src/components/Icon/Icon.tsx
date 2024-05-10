@@ -1,17 +1,30 @@
+import { colors } from '@/constants';
 import React, { ComponentProps } from 'react';
 import { useIcon } from './useIcon';
 
-export interface IconProps extends ComponentProps<'span'> {
+// TODO type textPosition = 'left' | 'right' | 'top' | 'bottom';
+
+export interface IconProps extends ComponentProps<'i'> {
   name: string;
   customIcon?: React.ReactSVGElement;
   color?: string;
   size?: number;
+  // TODO text?: TextProps;
+  // TODO textPosition?: textPosition; TODO
   className?: string;
   style?: React.CSSProperties;
 }
 
-export const Icon = (props: IconProps): JSX.Element => {
-  const { children, ...rest } = useIcon(props);
+export const Icon = ({
+  color = colors.black,
+  size = 24,
+  ...props
+}: IconProps): JSX.Element => {
+  const { children, ...iconProps } = useIcon({
+    size,
+    color,
+    ...props,
+  });
 
-  return <span {...rest}>{children}</span>;
+  return <i {...iconProps} children={children} />;
 };

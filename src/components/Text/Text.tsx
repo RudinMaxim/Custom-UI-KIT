@@ -49,6 +49,7 @@ export function Text({
     textDecoration,
     ...rest,
   });
+
   // @ts-ignore
   return <Element {...TextProps}>{children}</Element>;
 }

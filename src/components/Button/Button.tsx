@@ -17,11 +17,6 @@ export interface ButtonProps extends ComponentProps<'button'> {
   iconPosition?: 'left' | 'right';
 }
 
-// TODO style: Сделать правильные состояния при ховере и эктив 
-// TODO component: Сделать компонент button__link
-// TODO logic: Сделать отмену анимации ховер эктив при отведение после зажатия кнопки
-// TODO component: если только иконка (не текст) то убрать padding и сделать его 1 к 1
-
 export function Button({
   color = colors.black,
   variant = 'solid',

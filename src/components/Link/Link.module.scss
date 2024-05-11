@@ -1,0 +1,39 @@
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.25rem;
+  cursor: pointer;
+  color: inherit;
+  width: max-content;
+  transition: opacity 0.3s ease-in;
+
+  &__extra-small {
+    font-size: 0.75rem;
+  }
+
+  &__small {
+    font-size: 1rem;
+  }
+
+  &__medium {
+    font-size: 1.5rem;
+  }
+
+  &__large {
+    font-size: 2rem;
+  }
+
+  &__extra-large {
+    font-size: 3rem;
+  }
+
+  &:hover,
+  &:active {
+    opacity: 0.6;
+  }
+
+  &:focus {
+    // add
+  }
+}

@@ -16,6 +16,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "declaration": true,
+    "typeRoots": ["./dist/index.d.ts"],
     "jsx": "react-jsx",
 
     /* Linting */
@@ -24,6 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "./src/index.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

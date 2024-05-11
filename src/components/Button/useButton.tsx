@@ -1,13 +1,12 @@
-import { getClasses, getStyle } from '@/helper';
-import { getAccessibleAttributes } from '@/helper/getAccessibleAttributes';
+import { getAccessibleAttributes, getClasses, getStyle } from '@/helper';
 import { useColors } from '@/hook/useColors';
 import React from 'react';
 import { Icon, Loader } from '../index';
 import { ButtonGroupProps, ButtonProps } from './Button';
 import styles from './Button.module.scss';
+
 export function useButton(props: ButtonProps) {
   const {
-    children,
     variant,
     size,
     color,
@@ -16,6 +15,7 @@ export function useButton(props: ButtonProps) {
     isFullWidth,
     style: _style,
     className: _className,
+    children: _children,
     icon,
     iconPosition,
     ...rest
@@ -37,7 +37,12 @@ export function useButton(props: ButtonProps) {
     ['--button-background-color', main_color],
   ]);
 
-  const attributes = getAccessibleAttributes({isDisabled, isLoading, 'aria-label': children,  });
+  const attributes = getAccessibleAttributes({
+    isDisabled,
+    isLoading,
+    isFullWidth,
+    'aria-label': _children,
+  });
 
   const getButtonContent = (): React.JSX.Element => {
     if (isLoading) {
@@ -45,27 +50,27 @@ export function useButton(props: ButtonProps) {
     }
     return (
       <div className={styles['button-box']}>
-        {' '}
         {iconPosition === 'left' && icon && (
           <Icon {...icon} color={contrasting_color} />
-        )}{' '}
-        {children}{' '}
+        )}
+        {_children}
         {iconPosition === 'right' && icon && (
           <Icon {...icon} color={contrasting_color} />
-        )}{' '}
+        )}
       </div>
     );
   };
-  
+
   return {
     ...rest,
     ...attributes,
-    children: getButtonContent(),
     className,
     style,
     disabled,
+    children: getButtonContent(),
   };
 }
+
 export function useButtonGroup(props: ButtonGroupProps) {
   const {
     children,

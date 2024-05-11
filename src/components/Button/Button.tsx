@@ -1,14 +1,14 @@
 import { colors } from '@/constants';
+import { Size } from '@/types/props.type';
 import React, { ComponentProps } from 'react';
 import { IconProps } from '../Icon/Icon';
 import { useButton, useButtonGroup } from './useButton';
 
 type ButtonVariant = 'solid' | 'outline' | 'ghost'; // TODO | 'link';
-type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends ComponentProps<'button'> {
   variant?: ButtonVariant;
-  size?: ButtonSize;
+  size?: Size;
   color?: string;
   isLoading?: boolean;
   isDisabled?: boolean;
@@ -20,7 +20,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 export function Button({
   color = colors.black,
   variant = 'solid',
-  size = 'sm',
+  size = 'medium',
   isLoading = false,
   isDisabled = false,
   isFullWidth = false,
@@ -44,14 +44,14 @@ export function Button({
 export interface ButtonGroupProps extends ComponentProps<'div'> {
   children: React.ReactNode;
   variant?: ButtonVariant;
-  size?: ButtonSize;
+  size?: Size;
   style?: React.CSSProperties;
   isAttached?: boolean;
 }
 
 export function ButtonGroup({
   variant = 'solid',
-  size = 'sm',
+  size = 'medium',
   isAttached = false,
   ...props
 }: ButtonGroupProps): React.JSX.Element {

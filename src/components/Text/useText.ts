@@ -16,11 +16,7 @@ export function useText(props: TextProps) {
     ...rest
   } = props;
 
-  const className = getClasses([
-    styles.text,
-    styles[`text__${size}`],
-    _classe ?? '',
-  ]);
+  const className = getClasses(styles.text, styles[`text__${size}`], _classe);
 
   const style = getStyle({
     color,

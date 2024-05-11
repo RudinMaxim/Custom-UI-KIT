@@ -14,7 +14,7 @@ yarn add rukit
 
 ### 🚀Demo and Documentation
 
-You can view a demo of the components and read the full documentation on our **[RuKit Storybook](https://663e4acc3dc9d3156a445e7a-ddyzgblqhm.chromatic.com/?path=/docs/base-button--docs)** 👈
+You can view a demo of the components and read the full documentation on our **[RuKit Storybook](https://663e4acc3dc9d3156a445e7a-gcmiztcand.chromatic.com/?path=/docs/getting-started--docs)** 👈
 
 ---
 

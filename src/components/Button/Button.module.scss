@@ -23,27 +23,33 @@
   user-select: none;
 
   /* Size variants */
-  &__xs {
+  &__extra-small {
     padding: 0.25rem 0.5rem;
     font-size: 1rem;
     border-radius: var(--border-radius-xs);
   }
 
-  &__sm {
+  &__small {
     padding: 0.5rem 1rem;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     border-radius: var(--border-radius-sm);
   }
 
-  &__md {
-    padding: 1rem 1.5rem;
+  &__medium {
+    padding: 0.75rem 1.5rem;
     font-size: 1.5rem;
     border-radius: var(--border-radius-md);
   }
 
-  &__lg {
-    padding: 1.5rem 2rem;
-    font-size: 1.5rem;
+  &__large {
+    padding: 1rem 2rem;
+    font-size: 1.75rem;
+    border-radius: var(--border-radius-lg);
+  }
+
+  &__extra-large{
+    padding: 1.5rem 3rem;
+    font-size: 2rem;
     border-radius: var(--border-radius-lg);
   }
 

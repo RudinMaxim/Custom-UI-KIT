@@ -1,4 +1,5 @@
-import { contrastingColor, mergeClass, parseColor } from '@/utils';
+import { getAccessibleAttributes, getClasses, getStyle } from '@/helper';
+import { useColors } from '@/hook/useColors';
 import React from 'react';
 import { Icon, Loader } from '../index';
 import { ButtonGroupProps, ButtonProps } from './Button';
@@ -6,83 +7,55 @@ import styles from './Button.module.scss';
 
 export function useButton(props: ButtonProps) {
   const {
-    children,
     variant,
     size,
     color,
     isLoading,
     isDisabled,
     isFullWidth,
-    className,
+    style: _style,
+    className: _className,
+    children: _children,
     icon,
     iconPosition,
     ...rest
   } = props;
-
-  const mainColor = parseColor(color);
-
-  const contrasting =
-    variant === 'solid' ? contrastingColor(mainColor) : mainColor;
+  const { main_color, contrasting_color } = useColors(color);
 
   const disabled = isLoading || isDisabled;
 
-  const getButtonClasses = (): string => {
-    return mergeClass(
-      styles.button,
-      styles[`button__${variant}`],
-      styles[`button__${size}`],
-      isFullWidth ? styles['button__full-width'] : '',
-      // variant === 'link' ? styles.button__link : '',
-      className
-    );
-  };
+  const className = getClasses(
+    styles.button,
+    styles[`button__${variant}`],
+    styles[`button__${size}`],
+    isFullWidth ? styles['button__full-width'] : '',
+    _className ?? ''
+  );
 
-  const getButtonStyle = () => {
-    return {
-      '--button-content-color': contrasting,
-      '--button-background-color': mainColor,
-      ...props.style,
-    };
-  };
+  const style = getStyle({ ..._style }, [
+    ['--button-content-color', contrasting_color],
+    ['--button-background-color', main_color],
+  ]);
 
-  const getButtonAttributes =
-    (): React.ButtonHTMLAttributes<HTMLButtonElement> => {
-      const attributes: React.ButtonHTMLAttributes<HTMLButtonElement> = {
-        className: styles.button__content,
-        type: 'button',
-        'aria-label': !children
-          ? `Button ${icon?.name}`
-          : `Button ${children.toString()}`,
-      };
-
-      if (disabled) {
-        attributes['aria-disabled'] = true;
-      }
-
-      if (isLoading) {
-        attributes['aria-busy'] = true;
-      }
-
-      if (props['aria-describedby']) {
-        attributes['aria-describedby'] = props['aria-describedby'];
-      }
-
-      return attributes;
-    };
+  const attributes = getAccessibleAttributes({
+    isDisabled,
+    isLoading,
+    isFullWidth,
+    'aria-label': _children,
+  });
 
   const getButtonContent = (): React.JSX.Element => {
     if (isLoading) {
-      return <Loader color={contrasting} size="sm" />;
+      return <Loader color={contrasting_color} size="sm" />;
     }
-
     return (
       <div className={styles['button-box']}>
         {iconPosition === 'left' && icon && (
-          <Icon {...icon} color={contrasting} />
+          <Icon {...icon} color={contrasting_color} />
         )}
-        {children}
+        {_children}
         {iconPosition === 'right' && icon && (
-          <Icon {...icon} color={contrasting} />
+          <Icon {...icon} color={contrasting_color} />
         )}
       </div>
     );
@@ -90,30 +63,30 @@ export function useButton(props: ButtonProps) {
 
   return {
     ...rest,
-    ...getButtonAttributes(),
-    children: getButtonContent(),
-    className: getButtonClasses(),
-    style: getButtonStyle(),
+    ...attributes,
+    className,
+    style,
     disabled,
+    children: getButtonContent(),
   };
 }
 
 export function useButtonGroup(props: ButtonGroupProps) {
-  const { children, variant, size, isAttached, className, ...rest } = props;
-
-  const getButtonGroupClasses = (): string => {
-    return mergeClass(
-      styles['button-group'],
-      styles[`button-group__${variant}`],
-      styles[`button-group__${size}`],
-      isAttached ? styles['button__group__attached'] : '',
-      className
-    );
-  };
-
-  return {
+  const {
     children,
-    className: getButtonGroupClasses(),
-    ...rest,
-  };
+    variant,
+    size,
+    isAttached,
+    className: _className,
+    ...rest
+  } = props;
+
+  const className = getClasses(
+    styles['button-group'],
+    styles[`button-group__${variant}`],
+    styles[`button-group__${size}`],
+    isAttached ? styles['button__group__attached'] : '',
+    _className
+  );
+  return { children, className, ...rest };
 }

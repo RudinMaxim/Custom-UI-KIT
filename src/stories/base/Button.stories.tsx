@@ -18,7 +18,7 @@ const meta: Meta<typeof Button> = {
     size: {
       control: 'select',
       description: 'The size of the button',
-      options: ['xs', 'sm', 'md', 'lg'],
+      options: ['extra-small', 'small', 'medium', 'large', 'extra-large'],
     },
     color: {
       control: 'color',
@@ -55,7 +55,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     children: 'Button',
-    size: 'md',
+    size: 'medium',
     variant: 'solid',
   },
 };
@@ -73,10 +73,11 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button size="xs">XSmall Button</Button>
-      <Button size="sm">Small Button</Button>
-      <Button size="md">Medium Button</Button>
-      <Button size="lg">Large Button</Button>
+      <Button size="extra-small">XSmall Button</Button>
+      <Button size="small">Small Button</Button>
+      <Button size="medium">Medium Button</Button>
+      <Button size="large">Large Button</Button>
+      <Button size="extra-large">Large Button</Button>
     </div>
   ),
 };
@@ -84,16 +85,14 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button color="tomato">Named Color (tomato)</Button>
-      <Button color="#ff6347">Hexadecimal Color (#ff6347)</Button>
-      <Button color="rgb(255, 99, 71)">RGB Color (rgb(255, 99, 71))</Button>
-      <Button color="rgba(255, 99, 71, 0.5)">
-        RGBA Color (hsl(9, 100%, 64%))
+      <Button color="tomato" size="medium">
+        Named Color
       </Button>
-      <Button color="hsl(9, 100%, 64%)">HSL Color (hsl(9, 100%, 64%))</Button>
-      <Button color="hsla(9, 100%, 64%, 0.5)">
-        HSLA Color (hsla(9, 100%, 64%, 0.5))
-      </Button>
+      <Button color="#ff6347">Hexadecimal Color</Button>
+      <Button color="rgb(255, 99, 71)">RGB Color</Button>
+      <Button color="rgba(255, 99, 71, 0.5)">RGBA Color</Button>
+      <Button color="hsl(9, 100%, 64%)">HSL Color</Button>
+      <Button color="hsla(9, 100%, 64%, 0.5)">HSLA Color</Button>
     </div>
   ),
 };
@@ -101,9 +100,9 @@ export const Colors: Story = {
 export const States: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button isLoading>Loading Button</Button>
-      <Button isDisabled>Disabled Button</Button>
-      <Button isFullWidth>Full Width Button</Button>
+      <Button isLoading>Loading</Button>
+      <Button isDisabled>Disabled</Button>
+      <Button isFullWidth>Full Width</Button>
     </div>
   ),
 };
@@ -138,10 +137,10 @@ export const ButtonGroups: Story = {
         <Button variant="outline">Outline 3</Button>
       </ButtonGroup>
       <br />
-      <ButtonGroup size="lg" isAttached>
-        <Button size="lg">Large 1</Button>
-        <Button size="lg">Large 2</Button>
-        <Button size="lg">Large 3</Button>
+      <ButtonGroup size="large" isAttached>
+        <Button size="large">Large 1</Button>
+        <Button size="large">Large 2</Button>
+        <Button size="large">Large 3</Button>
       </ButtonGroup>
     </>
   ),

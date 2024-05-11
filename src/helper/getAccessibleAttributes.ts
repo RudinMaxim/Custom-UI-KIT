@@ -16,6 +16,12 @@ type AriaProps<T extends React.ElementType> = React.ComponentProps<T> & {
   icon?: { name: string };
 };
 
+/**
+ * Generates a React component with accessible attributes based on the provided element type.
+ * @template T - The React element type to generate accessible attributes for.
+ * @param props - The props object for the React component.
+ * @returns A React component with accessible attributes.
+ */
 export const getAccessibleAttributes = <T extends React.ElementType>(
   props: AriaProps<T>
 ): React.ComponentProps<T> => {

@@ -9,6 +9,7 @@ export function useIcon(props: IconProps) {
     name,
     customIcon,
     color,
+    style: _style,
     className: _className,
     size,
     ...rest
@@ -18,10 +19,10 @@ export function useIcon(props: IconProps) {
     color,
     width: size,
     height: size,
-    ...rest.style,
+    ..._style,
   });
 
-  const className = getClasses([styles.icon, ...(_className ?? '')]);
+  const className = getClasses(styles.icon, _className);
 
   const getIconContent = (): JSX.Element | null => {
     if (customIcon && React.isValidElement(customIcon)) {

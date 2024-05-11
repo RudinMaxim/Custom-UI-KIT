@@ -1,28 +1,23 @@
-import { mergeClass, parseColor } from '@/utils';
+import { getClasses, getStyle } from '@/helper';
+import { useColors } from '@/hook/useColors';
 import { LoaderProps } from './Loader';
 import styles from './Loader.module.scss';
 
 export function useLoader(props: LoaderProps) {
-  const getLoaderClasses = (props: LoaderProps): string => {
-    const { variant = 'solid', size = 'md', className } = props;
-    return mergeClass(
-      styles.loader,
-      styles[`loader__${variant}`],
-      styles[`loader__${size}`],
-      className
-    );
-  };
+  const { style: _style, size, variant, color, className: _className } = props;
+  const { main_color } = useColors(color);
 
-  const getLoaderStyle = (props: LoaderProps) => {
-    const { color, style } = props;
-    return {
-      ...style,
-      '--loader-color': parseColor(color),
-    };
-  };
+  const style = getStyle({ ..._style }, [['--loader-color', main_color]]);
+  
+  const className = getClasses(
+    styles.loader,
+    styles[`loader__${variant}`],
+    styles[`loader__${size}`],
+    _className
+  );
 
   return {
-    className: getLoaderClasses(props),
-    style: getLoaderStyle(props),
+    className,
+    style,
   };
 }

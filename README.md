@@ -23,6 +23,7 @@ You can view a demo of the components and read the full documentation on our **[
 - 📦 **React** + **TypeScript**
 - 💐 **SCSS** for styling components
 - ⚡ **Vite** for assembly and quick work
+- 🛞 CI/CD - **GitHub Actions**
 - 🔬 Tests with **Jest**
 - 📚 **Storybook** to demonstrate components
 - 🛡 **ESLint** for static code analysis

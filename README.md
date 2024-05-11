@@ -40,6 +40,6 @@ You can view a demo of the components and read the full documentation on our **[
 
 ---
 
-## 🤝Содействие
+## 🤝Assistance
 
 We welcome any contribution to the development of RuKit! If you have ideas, fixes or new features, feel free to create an **[issue](https://github.com/RudinMaxim/RuKit/issues)** 👈

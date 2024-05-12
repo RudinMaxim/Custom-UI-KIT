@@ -2,7 +2,7 @@ import { Size } from '@/types/props.type';
 import { ComponentProps } from 'react';
 import { IconProps } from '../Icon/Icon';
 
-type ButtonVariant = 'solid' | 'outline' | 'ghost'; // TODO | 'link';
+type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link';
 type ButtonPosition = 'left' | 'right';
 
 export interface ButtonProps extends ComponentProps<'button'> {
@@ -29,6 +29,12 @@ export interface ButtonProps extends ComponentProps<'button'> {
 
   /** The position of the icon in the button (left or right) */
   iconPosition?: ButtonPosition;
+
+  as?: React.ElementType;
+}
+
+export interface ButtonLinkProps extends ButtonProps {
+  href: string;
 }
 
 export interface ButtonGroupProps extends ComponentProps<'div'> {
@@ -38,7 +44,7 @@ export interface ButtonGroupProps extends ComponentProps<'div'> {
   /** The variant of the buttons in the group (solid, outline, or ghost) */
   variant?: ButtonVariant;
 
-  /** The size of the buttons in the group (small, medium, or large) */
+  /** The size of the buttons in the group ('extra-small', 'small', 'medium', 'large', 'extra-large') */
   size?: Size;
 
   /** Additional styles to apply to the button group */

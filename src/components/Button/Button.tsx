@@ -1,6 +1,6 @@
 import { colors } from '@/constants';
 import React from 'react';
-import { ButtonGroupProps, ButtonProps } from './type.local';
+import { ButtonGroupProps, ButtonLinkProps, ButtonProps } from './type.local';
 import { useButton, useButtonGroup } from './useButton';
 
 /**
@@ -17,6 +17,7 @@ export function Button({
   isDisabled = false,
   isFullWidth = false,
   iconPosition = 'left',
+  as: Component = 'button',
   ...props
 }: ButtonProps): React.JSX.Element {
   const { children, ...buttonProps } = useButton({
@@ -30,8 +31,50 @@ export function Button({
     ...props,
   });
 
-  return <button {...buttonProps}>{children}</button>;
+  return <Component {...buttonProps}>{children}</Component>;
 }
+
+/**
+ * A React component that renders a button-styled link.
+ *
+ * @param props - The props for the ButtonLink component.
+ * @param props.children - The content to be rendered inside the button.
+ * @param props.href - The URL that the button should link to.
+ * @param props.className - An optional CSS class name to apply to the button.
+ */
+export const ButtonLink = ({
+  href,
+  color = colors.black,
+  variant = 'outline',
+  size = 'small',
+  isLoading = false,
+  isDisabled = false,
+  isFullWidth = false,
+  iconPosition = 'left',
+  as: Component = 'a',
+  ...props
+}: ButtonLinkProps): React.JSX.Element => {
+  if (!href) {
+    throw new Error('href is required for ButtonLink component');
+  }
+
+  const { children, ...buuttonProps } = useButton({
+    variant,
+    color,
+    size,
+    isLoading,
+    isDisabled,
+    isFullWidth,
+    iconPosition,
+    ...props,
+  });
+
+  return (
+    <Component as="a" href={href} {...buuttonProps}>
+      {children}
+    </Component>
+  );
+};
 
 /**
  * A group of buttons with various styles and options.

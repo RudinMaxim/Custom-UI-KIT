@@ -1,8 +1,13 @@
 @import '../../styles/globals';
 
+:root {
+  --secondary-border-color: #d0d5dd;
+}
+
 .button-box {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 
@@ -10,6 +15,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
   font-weight: 500;
   transition:
     background-color 0.2s ease,
@@ -24,33 +30,38 @@
 
   /* Size variants */
   &__extra-small {
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-    border-radius: var(--border-radius-xs);
+    padding: 0.5rem 1rem;
+    font-size: var(--font-size-xs);
+    border-radius: var(--border-radius-sm);
+    min-height: 2rem;
   }
 
   &__small {
-    padding: 0.5rem 1rem;
-    font-size: 1.25rem;
+    padding: 0.75rem 1.25rem;
+    font-size: var(--font-size-sm);
     border-radius: var(--border-radius-sm);
+    min-height: 2.125rem;
   }
 
   &__medium {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    font-size: var(--font-size-md);
     border-radius: var(--border-radius-md);
+    min-height: 2.25rem;
   }
 
   &__large {
-    padding: 1rem 2rem;
-    font-size: 1.75rem;
-    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.75rem;
+    font-size: var(--font-size-lg);
+    border-radius: var(--border-radius-md);
+    min-height: 2.5rem;
   }
 
-  &__extra-large{
-    padding: 1.5rem 3rem;
-    font-size: 2rem;
-    border-radius: var(--border-radius-lg);
+  &__extra-large {
+    padding: 1.5rem 2rem;
+    font-size: var(--font-size-xl);
+    border-radius: var(--border-radius-md);
+    min-height: 2.75rem;
   }
 
   /* Full width variant */
@@ -60,78 +71,96 @@
     box-sizing: border-box;
   }
 
-  /* Disabled variant */
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   /* Button variants */
   &__solid {
-    border: none;
     transition: all 0.2s ease-in-out;
     color: var(--button-content-color);
     background-color: var(--button-background-color);
+    transition: all 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 0.75;
-      transition: all 0.2s ease-in-out;
+    @media (hover: hover) {
+      &:hover {
+        filter: brightness(85%);
+        background-blend-mode: darken;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        filter: brightness(85%);
+        background-blend-mode: darken;
+        transition: all 0.2s ease-in-out;
+      }
     }
 
     &:focus {
       outline-color: transparent;
       outline-style: solid;
-      box-shadow: 0 0 0 4px var(--button-content-color);
-      transition: all 0.2s ease-in-out;
-    }
-
-    &:active {
-      outline-color: transparent;
-      outline-style: solid;
-      box-shadow: 0 0 0 4px gray;
-      transition: all 0.2s ease-in-out;
+      box-shadow: 0 0 0 3px #f0f2f4;
     }
   }
 
   &__outline {
     background-color: transparent;
-    border: 1px solid var(--button-background-color);
+    border: 1px solid var(--secondary-border-color);
     color: var(--button-background-color);
     transition: all 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 0.75;
-      transition: all 0.2s ease-in-out;
+    @media (hover: hover) {
+      &:hover {
+        background: var(--button-content-color);
+        filter: brightness(90%);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        &:hover {
+          background: var(--button-content-color);
+          filter: brightness(90%);
+        }
+      }
     }
 
     &:focus {
       outline-color: transparent;
       outline-style: solid;
       box-shadow: 0 0 0 4px var(--button-content-color);
-      transition: all 0.2s ease-in-out;
-    }
-
-    &:active {
-      // Стили при фокусе
+      transition: box-shadow 0.2s ease-in-out;
     }
   }
 
   &__ghost {
     background-color: transparent;
-    transition: all 0.2s ease-in-out;
     color: var(--button-background-color);
+    transition: background opacity 0.2s ease-in-out;
     border: none;
+    opacity: 0.8;
 
-    &:hover {
-      opacity: 0.75;
+    @media (hover: hover) {
+      &:hover {
+        background: var(--button-content-color);
+        filter: brightness(90%);
+      }
+    }
+
+    @media (hover: none) {
+      &:active {
+        &:hover {
+          background: var(--button-content-color);
+          filter: brightness(90%);
+        }
+      }
     }
 
     &:focus {
-      // Стили при фокусе
-    }
-
-    &:active {
-      // Стили при нажатии
+      opacity: 1;
     }
   }
 }
@@ -139,35 +168,34 @@
 .button-group {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 
   &__attached {
     > button {
-      border-radius: 0;
+      border-radius: var(--border-radius-none);
 
       &:first-child {
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
+        border-top-left-radius: var(--border-radius-sm);
+        border-bottom-left-radius: var(--border-radius-sm);
       }
 
       &:last-child {
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
+        border-top-right-radius: var(--border-radius-sm);
+        border-bottom-right-radius: var(--border-radius-sm);
       }
     }
   }
   > button {
-    border-radius: 0;
+    border-radius: var(--border-radius-none);
 
     &:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
+      border-top-left-radius: var(--border-radius-sm);
+      border-bottom-left-radius: var(--border-radius-sm);
     }
 
     &:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+      border-top-right-radius: var(--border-radius-sm);
+      border-bottom-right-radius: var(--border-radius-sm);
     }
   }
 
@@ -195,31 +223,38 @@
     }
   }
 
-  &__xs {
+  &__extra-small {
     > button {
       padding: 2px 6px;
-      font-size: 0.75rem;
+      font-size: var(--font-size-xs);
     }
   }
 
-  &__sm {
+  &__small {
     > button {
       padding: 4px 8px;
-      font-size: 0.875rem;
+      font-size: var(--font-size-sm);
     }
   }
 
-  &__md {
+  &__medium {
     > button {
       padding: 6px 12px;
-      font-size: 1rem;
+      font-size: var(--font-size-md);
     }
   }
 
-  &__lg {
+  &__large {
     > button {
       padding: 8px 16px;
-      font-size: 1.125rem;
+      font-size: var(--font-size-lg);
+    }
+  }
+
+  &__extra-large {
+    > button {
+      padding: 8px 16px;
+      font-size: var(--font-size-xl);
     }
   }
 }

@@ -2,8 +2,8 @@ import { getAccessibleAttributes, getClasses, getStyle } from '@/helper';
 import { useColors } from '@/hook/useColors';
 import React from 'react';
 import { Icon, Loader } from '../index';
-import { ButtonGroupProps, ButtonProps } from './Button';
 import styles from './Button.module.scss';
+import { ButtonGroupProps, ButtonProps } from './type.local';
 
 export function useButton(props: ButtonProps) {
   const {
@@ -31,7 +31,6 @@ export function useButton(props: ButtonProps) {
     isFullWidth ? styles['button__full-width'] : '',
     _className ?? ''
   );
-
   const style = getStyle({ ..._style }, [
     ['--button-content-color', contrasting_color],
     ['--button-background-color', main_color],
@@ -46,8 +45,26 @@ export function useButton(props: ButtonProps) {
 
   const getButtonContent = (): React.JSX.Element => {
     if (isLoading) {
-      return <Loader color={contrasting_color} size="sm" />;
+      return (
+        <div className={`${styles['button-box']} ${styles['button-box__loader-only']}`}>
+          <Loader
+            color={variant === 'outline' ? main_color : contrasting_color}
+            size="sm"
+          />
+        </div>
+      );
     }
+  
+    const hasContent = Boolean(_children);
+  
+    if (!hasContent && icon) {
+      return (
+        <div className={`${styles['button-box']} ${styles['button-box__icon-only']}`}>
+          <Icon {...icon} color={contrasting_color} />
+        </div>
+      );
+    }
+  
     return (
       <div className={styles['button-box']}>
         {iconPosition === 'left' && icon && (
@@ -60,11 +77,14 @@ export function useButton(props: ButtonProps) {
       </div>
     );
   };
+  
+  
 
   return {
     ...rest,
     ...attributes,
     className,
+    
     style,
     disabled,
     children: getButtonContent(),

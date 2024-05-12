@@ -1,7 +1,7 @@
-import { Button, ButtonGroup } from '@/index';
+import { Button, ButtonGroup, ButtonLink } from '@/index';
 import { Story } from '../index.stories';
 
-export default {}
+export default {};
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
@@ -27,9 +27,7 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button color="tomato" size="medium">
-        Named Color
-      </Button>
+      <Button color="tomato">Named Color</Button>
       <Button color="#ff6347">Hexadecimal Color</Button>
       <Button color="rgb(255, 99, 71)">RGB Color</Button>
       <Button color="rgba(255, 99, 71, 0.5)">RGBA Color</Button>
@@ -61,6 +59,14 @@ export const WithIcon: Story = {
       </Button>
       <Button icon={{ name: 'search', size: 24 }} />
     </div>
+  ),
+};
+
+export const WithLink: Story = {
+  render: () => (
+    <ButtonLink href={'https://github.com/RudinMaxim/RuKit'}>
+      WithLink
+    </ButtonLink>
   ),
 };
 

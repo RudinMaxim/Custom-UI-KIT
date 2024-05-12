@@ -24,13 +24,16 @@ export function useButton(props: ButtonProps) {
 
   const disabled = isLoading || isDisabled;
 
+  const hasIcon = !_children && Boolean(icon);
+
   const className = getClasses(
     styles.button,
     styles[`button__${variant}`],
-    styles[`button__${size}`],
+    styles[`button__${size}${hasIcon ? '-icon' : ''}`],
     isFullWidth ? styles['button__full-width'] : '',
     _className ?? ''
   );
+
   const style = getStyle({ ..._style }, [
     ['--button-content-color', contrasting_color],
     ['--button-background-color', main_color],
@@ -46,25 +49,12 @@ export function useButton(props: ButtonProps) {
   const getButtonContent = (): React.JSX.Element => {
     if (isLoading) {
       return (
-        <div className={`${styles['button-box']} ${styles['button-box__loader-only']}`}>
-          <Loader
-            color={variant === 'outline' ? main_color : contrasting_color}
-            size="sm"
-          />
-        </div>
+        <Loader
+          color={variant === 'outline' ? main_color : contrasting_color}
+          size="sm"
+        />
       );
     }
-  
-    const hasContent = Boolean(_children);
-  
-    if (!hasContent && icon) {
-      return (
-        <div className={`${styles['button-box']} ${styles['button-box__icon-only']}`}>
-          <Icon {...icon} color={contrasting_color} />
-        </div>
-      );
-    }
-  
     return (
       <div className={styles['button-box']}>
         {iconPosition === 'left' && icon && (
@@ -77,14 +67,12 @@ export function useButton(props: ButtonProps) {
       </div>
     );
   };
-  
-  
 
   return {
     ...rest,
     ...attributes,
     className,
-    
+
     style,
     disabled,
     children: getButtonContent(),

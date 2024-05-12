@@ -63,6 +63,32 @@
     border-radius: var(--border-radius-md);
     min-height: 2.75rem;
   }
+  
+   /* Size icon variants */
+  &__extra-small-icon {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+  }
+
+  &__small-icon {
+    padding: 0.75rem;
+    border-radius: var(--border-radius-sm);
+  }
+
+  &__medium-icon {
+    padding: 1rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  &__large-icon {
+    padding: 1.25rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  &__extra-large-icon {
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+  }
 
   /* Full width variant */
   &__full-width {

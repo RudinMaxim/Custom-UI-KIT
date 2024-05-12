@@ -11,6 +11,7 @@ yarn add rukit
 ```
 
 🎉 Congratulations! Now you can use **RuKit** components in your project!
+And you can use it like this 👇
 
 ```tsx
 import { Button } from 'rukit';

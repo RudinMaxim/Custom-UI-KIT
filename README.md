@@ -12,6 +12,14 @@ yarn add rukit
 
 🎉 Congratulations! Now you can use **RuKit** components in your project!
 
+```tsx
+import { Button } from 'rukit';
+
+export default function page() {
+  return <Button size="medium" />;
+}
+```
+
 ### 🚀Demo and Documentation
 
 You can view a demo of the components and read the full documentation on our **[RuKit Storybook](https://663e4acc3dc9d3156a445e7a-wdgnnoijzt.chromatic.com/?path=/docs/intro-getting-started--documentation)** 👈

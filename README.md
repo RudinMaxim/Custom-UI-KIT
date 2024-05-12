@@ -33,7 +33,7 @@ You can view a demo of the components and read the full documentation on our **[
 - 💐 **SCSS** for styling components
 - ⚡ **Vite** for assembly and quick work
 - 🛞 CI/CD - **GitHub Actions**
-- 🔬 Tests with **Jest**
+- 🔬 Tests with **Jest** and **React Testing Library**
 - 📚 **Storybook** to demonstrate components
 - 🛡 **ESLint** for static code analysis
 - 💅 **Prettier** for code formatting

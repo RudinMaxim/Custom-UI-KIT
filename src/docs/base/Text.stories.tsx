@@ -28,7 +28,7 @@ const meta: Meta<typeof Text> = {
       control: 'select',
     },
   },
-};
+} satisfies Meta<typeof Text>
 
 export default meta;
 

@@ -1,26 +1,18 @@
 import { colors } from '@/constants';
-import { Size } from '@/types/props.type';
-import React, { ComponentProps } from 'react';
-import { IconProps } from '../Icon/Icon';
+import React from 'react';
+import { ButtonGroupProps, ButtonProps } from './type.local';
 import { useButton, useButtonGroup } from './useButton';
 
-type ButtonVariant = 'solid' | 'outline' | 'ghost'; // TODO | 'link';
-
-export interface ButtonProps extends ComponentProps<'button'> {
-  variant?: ButtonVariant;
-  size?: Size;
-  color?: string;
-  isLoading?: boolean;
-  isDisabled?: boolean;
-  isFullWidth?: boolean;
-  icon?: IconProps;
-  iconPosition?: 'left' | 'right';
-}
-
+/**
+ * A button component with various styles and options.
+ *
+ * @param {ButtonProps} props - The props for the button component.
+ * @returns {React.JSX.Element} The rendered button component.
+ */
 export function Button({
   color = colors.black,
   variant = 'solid',
-  size = 'medium',
+  size = 'small',
   isLoading = false,
   isDisabled = false,
   isFullWidth = false,
@@ -41,14 +33,12 @@ export function Button({
   return <button {...buttonProps}>{children}</button>;
 }
 
-export interface ButtonGroupProps extends ComponentProps<'div'> {
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-  size?: Size;
-  style?: React.CSSProperties;
-  isAttached?: boolean;
-}
-
+/**
+ * A group of buttons with various styles and options.
+ *
+ * @param {ButtonGroupProps} props - The props for the button group component.
+ * @returns {React.JSX.Element} The rendered button group component.
+ */
 export function ButtonGroup({
   variant = 'solid',
   size = 'medium',

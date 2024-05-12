@@ -1,0 +1,38 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Button, ButtonGroup } from '@/components';
+import _Button from './index.stories.tsx';
+
+<Meta title="base/Button/Overview" component={Button} of={_Button} />
+
+# Button
+The Button component is a versatile UI element used to trigger actions or events in your application. It can be styled in various ways to convey different levels of importance or meaning. Use buttons for primary actions or events in your application. For secondary or tertiary actions, consider using links or other UI elements.
+
+```tsx
+import { Button } from 'rukit'
+
+export default function page() {
+  return (
+    <Button size='medium'/>
+  )
+}
+
+```
+
+## Props
+
+The `Button` component accepts the following props:
+
+- `variant`: The style variant of the button. Can be `solid`, `outline`, or `ghost`.
+- `size`: The size of the button. Can be `extra-small`, `small`, `medium`, `large`, or `extra-large`.
+- `color`: The color of the button in any valid CSS color format (hex, rgb, hsl, named colors, etc.).
+- `isLoading`: Whether the button should display a loading spinner or not.
+- `isDisabled`: Whether the button should be disabled or not.
+- `isFullWidth`: Whether the button should span the full width of its container.
+- `icon`: An object representing the icon to display in the button.
+- `iconPosition`: The position of the icon in the button (`left` or `right`).
+
+<Canvas>
+  <Story name="Default" teg={'autodocs'}>
+    <Button>Default Button</Button>
+  </Story>
+</Canvas>

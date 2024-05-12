@@ -1,65 +1,7 @@
-import { Button, ButtonGroup } from '@/components/Button/Button';
-import type { Meta, StoryObj } from '@storybook/react';
+import { Button, ButtonGroup } from '@/index';
+import { Story } from '../index.stories';
 
-const meta: Meta<typeof Button> = {
-  component: Button,
-  title: 'base/Button',
-  tags: ['autodocs'],
-  argTypes: {
-    children: {
-      control: 'text',
-      description: 'The text inside the button',
-    },
-    variant: {
-      control: 'select',
-      description: 'The variant of the button',
-      options: ['solid', 'outline', 'ghost'],
-    },
-    size: {
-      control: 'select',
-      description: 'The size of the button',
-      options: ['extra-small', 'small', 'medium', 'large', 'extra-large'],
-    },
-    color: {
-      control: 'color',
-      description: 'The color of the button',
-    },
-    isLoading: {
-      control: 'boolean',
-      description: 'Whether the button is in loading state',
-    },
-    isDisabled: {
-      control: 'boolean',
-      description: 'Whether the button is disabled',
-    },
-    isFullWidth: {
-      control: 'boolean',
-      description: 'Whether the button is full width',
-    },
-    icon: {
-      control: 'object',
-      description: 'The icon to display on the button',
-    },
-    iconPosition: {
-      control: 'select',
-      description: 'The position of the icon on the button',
-      options: ['left', 'right'],
-    },
-  },
-};
-
-export default meta;
-
-type Story = StoryObj<typeof Button>;
-
-export const Default: Story = {
-  args: {
-    children: 'Button',
-    size: 'medium',
-    variant: 'solid',
-  },
-};
-
+export default {}
 export const Variants: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>

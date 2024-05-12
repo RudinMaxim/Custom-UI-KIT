@@ -31,7 +31,7 @@ const meta: Meta<typeof Image> = {
       description: 'Inline styles for the image',
     },
   },
-};
+} satisfies Meta<typeof Image>;
 
 export default meta;
 

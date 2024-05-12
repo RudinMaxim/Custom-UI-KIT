@@ -3,7 +3,7 @@ import path from 'path';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/docs/**/*.mdx', '../src/docs/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
@@ -17,6 +17,7 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag',
+    defaultName: 'Documentation'
   },
   viteFinal: async (config) => {
     config.plugins?.push(

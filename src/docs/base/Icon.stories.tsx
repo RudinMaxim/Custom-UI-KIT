@@ -1,6 +1,6 @@
+import { Icon } from '@/components/Icon/Icon';
 import { IconMap } from '@/constants/IconMap';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon } from '../../components/Icon/Icon';
 
 const iconNames = Object.keys(IconMap);
 
@@ -14,7 +14,7 @@ const meta: Meta<typeof Icon> = {
       options: iconNames,
     },
   },
-};
+} satisfies Meta<typeof Icon>;
 
 export default meta;
 

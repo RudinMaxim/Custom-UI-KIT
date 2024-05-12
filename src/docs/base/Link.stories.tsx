@@ -16,15 +16,15 @@ const meta: Meta<typeof Link> = {
       options: ['extra-small', 'small', 'medium', 'large', 'extra-large'],
     },
     target: {
-        control: 'select',
-        options: ['_blank', '_parent', '_top', '_self']
+      control: 'select',
+      options: ['_blank', '_parent', '_top', '_self'],
     },
     color: {
       control: 'color',
       description: 'The color of the button',
     },
   },
-};
+} satisfies Meta<typeof Link>;
 
 export default meta;
 

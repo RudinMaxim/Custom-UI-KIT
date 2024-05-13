@@ -17,7 +17,6 @@ export function Button({
   isDisabled = false,
   isFullWidth = false,
   iconPosition = 'left',
-  as: Component = 'button',
   ...props
 }: ButtonProps): React.JSX.Element {
   const { children, ...buttonProps } = useButton({
@@ -31,7 +30,7 @@ export function Button({
     ...props,
   });
 
-  return <Component {...buttonProps}>{children}</Component>;
+  return <button {...buttonProps}>{children}</button>;
 }
 
 /**
@@ -51,7 +50,6 @@ export const ButtonLink = ({
   isDisabled = false,
   isFullWidth = false,
   iconPosition = 'left',
-  as: Component = 'a',
   ...props
 }: ButtonLinkProps): React.JSX.Element => {
   if (!href) {
@@ -70,9 +68,9 @@ export const ButtonLink = ({
   });
 
   return (
-    <Component as="a" href={href} {...buuttonProps}>
+    <a href={href} {...buuttonProps}>
       {children}
-    </Component>
+    </a>
   );
 };
 

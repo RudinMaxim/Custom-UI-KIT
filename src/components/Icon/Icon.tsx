@@ -16,7 +16,7 @@ export interface IconProps extends ComponentProps<'i'> {
 }
 
 export const Icon = ({
-  color = colors.black,
+  color = colors.black['500'],
   size = 24,
   ...props
 }: IconProps): JSX.Element => {

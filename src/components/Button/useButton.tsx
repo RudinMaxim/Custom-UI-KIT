@@ -57,11 +57,11 @@ export function useButton(props: ButtonProps) {
     }
     return (
       <div className={styles['button-box']}>
-        {iconPosition === 'left' && icon && (
+        {iconPosition === 'left' && icon && icon.customIcon && icon.name && (
           <Icon {...icon} color={contrasting_color} />
         )}
         {_children}
-        {iconPosition === 'right' && icon && (
+        {iconPosition === 'right' && icon && icon.customIcon && icon.name && (
           <Icon {...icon} color={contrasting_color} />
         )}
       </div>

@@ -107,7 +107,6 @@
     transition: all 0.2s ease-in-out;
     color: var(--button-content-color);
     background-color: var(--button-background-color);
-    transition: all 0.2s ease-in-out;
 
     @media (hover: hover) {
       &:hover {
@@ -142,6 +141,7 @@
       &:hover {
         background: var(--button-content-color);
         filter: brightness(90%);
+        transition: all 0.2s ease-in-out;
       }
     }
 
@@ -150,6 +150,7 @@
         &:hover {
           background: var(--button-content-color);
           filter: brightness(90%);
+          transition: all 0.2s ease-in-out;
         }
       }
     }
@@ -165,7 +166,7 @@
   &__ghost {
     background-color: transparent;
     color: var(--button-background-color);
-    transition: background opacity 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     border: none;
     opacity: 0.8;
 

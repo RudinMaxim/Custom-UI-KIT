@@ -29,8 +29,6 @@ export interface ButtonProps extends ComponentProps<'button'> {
 
   /** The position of the icon in the button (left or right) */
   iconPosition?: ButtonPosition;
-
-  as?: React.ElementType;
 }
 
 export interface ButtonLinkProps extends ButtonProps {

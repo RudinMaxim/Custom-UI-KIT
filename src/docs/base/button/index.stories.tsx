@@ -47,5 +47,3 @@ export const Playground: Story = {
     children: 'Button',
   },
 };
-
-

@@ -10,7 +10,7 @@ import { useButton, useButtonGroup } from './useButton';
  * @returns {React.JSX.Element} The rendered button component.
  */
 export function Button({
-  color = colors.black,
+  color = colors.black['500'],
   variant = 'solid',
   size = 'small',
   isLoading = false,
@@ -44,7 +44,7 @@ export function Button({
  */
 export const ButtonLink = ({
   href,
-  color = colors.black,
+  color = colors.black['500'],
   variant = 'outline',
   size = 'small',
   isLoading = false,

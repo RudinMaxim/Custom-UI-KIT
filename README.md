@@ -6,8 +6,6 @@ To install **RuKit** in your project, simply run the following command in the te
 
 ```bash
 npm install rukit
-// or
-yarn add rukit
 ```
 
 🎉 Congratulations! Now you can use **RuKit** components in your project!
@@ -17,7 +15,7 @@ And you can use it like this 👇
 import { Button } from 'rukit';
 
 export default function page() {
-  return <Button size="medium" />;
+  return <Button size="medium">Button</Button>;
 }
 ```
 
@@ -38,16 +36,6 @@ You can view a demo of the components and read the full documentation on our **[
 - 🛡 **ESLint** for static code analysis
 - 💅 **Prettier** for code formatting
 - 💫 **Stylelint** for static CSS analysis
-
-## 🌈 Features
-
-- ✨ Maximum universal components
-- 🎨 Beautiful and modern design
-- 🔩Easily customizable
-- 📦 Lightweight and productive
-- 🌐 Available in multiple languages
-
----
 
 ## 🤝Assistance
 

@@ -9,7 +9,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Intro', "*"],
+        order: ['Intro', ['Home', 'Login', 'Admin'], 'Components', '*', 'WIP'],
       },
     },
     controls: {

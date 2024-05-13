@@ -1,5 +1,7 @@
 import { colors } from '@/constants';
 
+const colorCache = new Map<string, string>();
+
 /**
  * Provides a set of color-related utilities, including the ability to get the main color and a contrasting color.
  *
@@ -65,7 +67,7 @@ function getContrastingColor(color: string): string {
   // Convert contrasting RGB values back to hex code (assuming 2 digits per channel)
   const contrastingColorHex = `#${contrastingRed.toString(16).padStart(2, '0')}${contrastingGreen.toString(16).padStart(2, '0')}${contrastingBlue.toString(16).padStart(2, '0')}`;
 
-  return contrastingColorHex;
+  return contrastingColorHex.toUpperCase();
 }
 
 /**
@@ -75,6 +77,7 @@ function getContrastingColor(color: string): string {
  * @param defaultColor - The default color to be returned if the input color is not recognized.
  * @returns A valid CSS color value.
  */
+
 function parseColor(
   color: string | undefined,
   defaultColor = colors.black[500]
@@ -83,8 +86,19 @@ function parseColor(
     return defaultColor;
   }
 
+  // Check if the color is already in the cache
+  const cachedColor = colorCache.get(color);
+  if (cachedColor) {
+    return cachedColor;
+  }
+
   const colorValue =
     getColorValueFromNamedColor(color) || getColorValueFromFormat(color);
+
+  // Cache the parsed color value
+  if (colorValue) {
+    colorCache.set(color, colorValue);
+  }
 
   return colorValue || defaultColor;
 }

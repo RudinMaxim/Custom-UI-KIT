@@ -41,23 +41,28 @@ export function useButton({
     'aria-disabled': isDisabled || isLoading,
   };
 
-  const renderContent = () =>
-    isLoading ? (
-      <Loader
-        color={variant === 'outline' ? main_color : contrasting_color}
-        size="sm"
-      />
-    ) : (
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <Loader
+          color={variant === 'outline' ? main_color : contrasting_color}
+          size="sm"
+        />
+      );
+    }
+
+    return (
       <div className={styles['button-box']}>
-        {iconPosition === 'left' && icon?.customIcon && icon.name && (
+        {iconPosition === 'left' && icon && icon.name && (
           <Icon {...icon} color={contrasting_color} />
         )}
         {_children}
-        {iconPosition === 'right' && icon?.customIcon && icon.name && (
+        {iconPosition === 'right' && icon && icon.name && (
           <Icon {...icon} color={contrasting_color} />
         )}
       </div>
     );
+  };
 
   return {
     ...props,
@@ -67,7 +72,6 @@ export function useButton({
     children: renderContent(),
   };
 }
-
 
 export function useButtonGroup(props: ButtonGroupProps) {
   const {

@@ -21,7 +21,7 @@ export default function page() {
 
 ### 🚀Demo and Documentation
 
-You can view a demo of the components and read the full documentation on our **[RuKit Storybook](https://663e4acc3dc9d3156a445e7a-wdgnnoijzt.chromatic.com/?path=/docs/intro-getting-started--documentation)** 👈
+You can view a demo of the components and read the full documentation on our **[RuKit Storybook](https://663e4acc3dc9d3156a445e7a-ucebyrerrk.chromatic.com/?path=/docs/intro-installation--documentation)** 👈
 
 ---
 

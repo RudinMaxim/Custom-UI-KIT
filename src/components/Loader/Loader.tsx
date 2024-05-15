@@ -17,7 +17,7 @@ export interface LoaderProps extends ComponentProps<'div'> {
 export const Loader: React.FC<LoaderProps> = ({
   variant = 'rotate',
   size = 'md',
-  color = colors.black,
+  color = colors.black['500'],
   className,
   style,
 }): React.JSX.Element => {

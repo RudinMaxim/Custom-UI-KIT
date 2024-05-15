@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { Icon } from '@/components';
+import _Icon from './index.stories.tsx';
+
+<Meta title="base/Icon/Overview" component={Icon} of={_Icon} />
+
+# Icon
+
+The Icon component is a versatile UI element used to display icons in your application. It can be customized with various props to control the icon's appearance, size, color, and more.
+
+```tsx
+import { Icon } from 'rukit';
+
+export default function Page() {
+  return <Icon name="check" size={24} color="green" />;
+}
+```
+
+## Props
+
+The `Icon ` component accepts the following props:
+
+- `name `: The name of the icon to display. This should match the name of an icon in your icon library.
+- `customIcon `: An optional custom SVG icon to display instead of using a predefined icon from your library.
+- `color `: The color of the icon in any valid CSS color format ( `hex `, `rgb `, `hsl `, `named colors `, etc.).
+- `textColor `: The color of the optional text that can be displayed alongside the icon.
+- `size `: The size of the icon in pixels.
+- `text`: Optional text to display alongside the icon.
+- `textPosition `: The position of the text relative to the icon (left, right, top, or bottom).
+- `className `: Additional CSS classes to apply to the icon container.
+- `style `: Additional inline styles to apply to the icon container.
+
+<Canvas>
+  <Story name="Default">
+    <Icon name="check" />
+  </Story>
+</Canvas>

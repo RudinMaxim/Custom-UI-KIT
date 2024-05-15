@@ -42,7 +42,7 @@ export default meta;
 
 export type Story = StoryObj<typeof Button>;
 
-export const Playground: Story = {
+export const PlaygroundButton: Story = {
   args: {
     children: 'Button',
   },

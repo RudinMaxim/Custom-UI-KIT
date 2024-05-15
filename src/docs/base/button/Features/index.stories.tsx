@@ -27,12 +27,30 @@ export const Sizes: Story = {
 export const Colors: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-      <Button color="tomato">Named Color</Button>
-      <Button color="#ff6347">Hexadecimal Color</Button>
-      <Button color="rgb(255, 99, 71)">RGB Color</Button>
-      <Button color="rgba(255, 99, 71, 0.5)">RGBA Color</Button>
-      <Button color="hsl(9, 100%, 64%)">HSL Color</Button>
-      <Button color="hsla(9, 100%, 64%, 0.5)">HSLA Color</Button>
+      <Button color="red" size="extra-small">
+        Named
+      </Button>
+      <Button color="red.100" size="extra-small">
+        Named
+      </Button>
+      <Button color="#ff0000" size="extra-small">
+        Hexadecimal
+      </Button>
+      <Button color="rgba(255, 0, 0, 1)" size="extra-small">
+        RGB
+      </Button>
+      <Button color="rgba(255, 0, 0, 0.5)" size="extra-small">
+        RGBA
+      </Button>
+      <Button color="hsl(0, 100%, 50%)" size="extra-small">
+        HSL
+      </Button>
+      <Button color="hsla(0, 100%, 50%, 0.5)" size="extra-small">
+        HSLA
+      </Button>
+      <Button color="hwb(23, 100%, 100%)" size="extra-small">
+        hwb
+      </Button>
     </div>
   ),
 };

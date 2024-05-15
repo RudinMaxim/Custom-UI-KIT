@@ -34,7 +34,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
 export function Text({
   role = 'span',
   size = 'medium',
-  color = colors.black,
+  color = colors.black['500'],
   fontWeight = 'normal',
   lineHeight = 1.5,
   textDecoration = 'none',

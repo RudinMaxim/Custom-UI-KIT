@@ -1,0 +1,60 @@
+import {Button} from '../../index.ts';
+import * as ButtonStories from '../base/button/Features/index.stories.tsx';
+import { Meta, Story, Canvas } from '@storybook/blocks';
+
+<Meta />
+
+# Colors
+
+RuKit offers a flexible and powerful color system that makes it easy to customize the appearance of your components. You can specify colors in a variety of formats, making it easy to match your branding or design preferences.
+
+## Color formats
+
+You can specify colors using a variety of formats, including:
+
+- Named colors (e.g. 'red', 'blue')
+- Named colors and hue (e.g. 'red.100', 'red.900')
+- Hex colors (e.g. '#ff0000', '#f00')
+- RGB colors (e.g. 'rgb(255, 0, 0)')
+- RGBA colors (e.g. 'rgba(255, 0, 0, 0.5)')
+- HSL colors (eg 'hsl(0, 100%, 50%)')
+- HSLA colors (e.g. 'hsla(0, 100%, 50%, 0.5)')
+- HWB colors (e.g. 'hwb(0, 100%, 0%)')
+- LAB colors (e.g. 'lab(53.23, 80.11, 67.22)') - in progress
+
+Here is an example of how to set a color for a Button component:
+
+```tsx
+import { Button } from 'rukit';
+
+export default function page() {
+  return (
+      <Button color="red" size="extra-small">
+        Named
+      </Button>
+      <Button color="red.100" size="extra-small">
+        Named
+      </Button>
+      <Button color="#ff0000" size="extra-small">
+        Hexadecimal
+      </Button>
+      <Button color="rgba(255, 0, 0, 1)" size="extra-small">
+        RGB
+      </Button>
+      <Button color="rgba(255, 0, 0, 0.5)" size="extra-small">
+        RGBA
+      </Button>
+      <Button color="hsl(0, 100%, 50%)" size="extra-small">
+        HSL
+      </Button>
+      <Button color="hsla(0, 100%, 50%, 0.5)" size="extra-small">
+        HSLA
+      </Button>
+      <Button color="hwb(23, 100%, 100%)" size="extra-small">
+        hwb
+      </Button>
+  )
+}
+```
+
+<Canvas of={ButtonStories.Colors}/>

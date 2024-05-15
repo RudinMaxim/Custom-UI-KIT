@@ -1,0 +1,20 @@
+import { Icon } from '../../index.ts';
+import * as IconStories from '../base/icon/Features/index.stories.tsx';
+import { Meta, Story, Canvas } from '@storybook/blocks';
+
+<Meta />
+
+# Icon
+
+The `Icon` component allows you to easily add **SVG** icons to your Rukit components, making your interfaces more visually appealing and user-friendly. It is based on [fonts.google.com/icons](https://fonts.google.com/icons)
+
+```tsx
+import { Button } from 'rukit';
+
+export default function page() {
+  return <Icon name={search} text={'search'} />;
+}
+```
+
+<Canvas of={IconStories.AllIcon} />
+The Picture Pack will expand...

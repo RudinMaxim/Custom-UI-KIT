@@ -32,6 +32,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
 }
 
 export interface ButtonLinkProps extends ButtonProps {
+  /** The URL that the button should link to */
   href: string;
 }
 

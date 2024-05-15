@@ -1,5 +1,5 @@
 import { colors } from './colors';
-import { IconMap } from './IconMap';
+import { Icons } from './IconMap';
 
-export { colors, IconMap };
+export { colors, Icons };
 

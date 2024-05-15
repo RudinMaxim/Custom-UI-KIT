@@ -8,9 +8,6 @@ const preview: Preview = {
       page: DocumentationTemplate,
     },
     options: {
-      storySort: {
-        order: ['Intro', ['Home', 'Login', 'Admin'], 'Components', '*', 'WIP'],
-      },
     },
     controls: {
       matchers: {

@@ -1,25 +1,22 @@
-import { useMemo } from 'react';
+import { useColors } from '@/hook/useColors';
 import { InputProps } from './types.local';
 
 export const useInput = ({
   placeholder,
   value,
-  disabled,
+  isDisabled,
+  isLoading, 
   error,
+  ...props
 }: InputProps) => {
-  const inputProps = useMemo(
-    () => ({
-      placeholder,
-      value,
-      disabled,
-    }),
-    [placeholder, value, disabled]
-  );
+  const { main_color, contrasting_color } = useColors(color);
+  const disabled = isLoading || isDisabled;
 
-  const inputClasses = useMemo(
-    () => `${error ? 'error' : ''}`,
-    [error]
-  );
-
-  return { inputProps, inputClasses };
+  return {
+    placeholder,
+    value,
+    disabled,
+    error,
+    ...props,
+  };
 };

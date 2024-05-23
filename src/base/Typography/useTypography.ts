@@ -1,6 +1,6 @@
 import { getClasses, getStyle } from '@/helper';
-import styles from './Text.module.scss';
 import { TypographyProps } from './Typography';
+import styles from './Typography.module.scss';
 
 export function useTypography(props: TypographyProps) {
   const {

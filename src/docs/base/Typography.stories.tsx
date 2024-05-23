@@ -1,9 +1,9 @@
-import { Text } from '@/components';
+import { Typography } from '@/index';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Text> = {
-  component: Text,
-  title: 'base/Text',
+const meta: Meta<typeof Typography> = {
+  component: Typography,
+  title: 'base/Typography',
   tags: ['autodocs'],
   argTypes: {
     children: {
@@ -28,11 +28,11 @@ const meta: Meta<typeof Text> = {
       control: 'select',
     },
   },
-} satisfies Meta<typeof Text>
+} satisfies Meta<typeof Typography>
 
 export default meta;
 
-type Story = StoryObj<typeof Text>;
+type Story = StoryObj<typeof Typography>;
 
 export const Default: Story = {
   args: {
@@ -43,24 +43,24 @@ export const Default: Story = {
 export const Heading: Story = {
   render: () => (
     <>
-      <Text role="h1" size="extra-large" fontWeight={'bold'}>
+      <Typography role="h1" size="extra-large" fontWeight={'bold'}>
         Heading 1
-      </Text>
-      <Text role="h2" size="large" fontWeight={'bold'}>
+      </Typography>
+      <Typography role="h2" size="large" fontWeight={'bold'}>
         Heading 2
-      </Text>
-      <Text role="h3" size="medium" fontWeight={'bold'}>
+      </Typography>
+      <Typography role="h3" size="medium" fontWeight={'bold'}>
         Heading 3
-      </Text>
-      <Text role="h4" size="medium" fontWeight={'bold'}>
+      </Typography>
+      <Typography role="h4" size="medium" fontWeight={'bold'}>
         Heading 4
-      </Text>
-      <Text role="h5" size="small" fontWeight={'bold'}>
+      </Typography>
+      <Typography role="h5" size="small" fontWeight={'bold'}>
         Heading 5
-      </Text>
-      <Text role="h6" size="extra-small" fontWeight={'bold'}>
+      </Typography>
+      <Typography role="h6" size="extra-small" fontWeight={'bold'}>
         Heading 5
-      </Text>
+      </Typography>
     </>
   ),
 };

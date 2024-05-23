@@ -1,5 +1,6 @@
 import { Loader } from '@/components';
 import { getClasses, getStyle } from '@/helper';
+import { useAccessible } from '@/hook/useAccessible';
 import { useColors } from '@/hook/useColors';
 import { Icon } from '../index';
 import styles from './Button.module.scss';
@@ -20,7 +21,6 @@ export function useButton({
   ...props
 }: ButtonProps) {
   const { main_color, contrasting_color } = useColors(color);
-  const disabled = isLoading || isDisabled;
   const hasIcon = !_children && Boolean(icon);
 
   const buttonClasses = getClasses(
@@ -36,11 +36,14 @@ export function useButton({
     ['--button-background-color', main_color],
   ]);
 
-  const accessibleAttributes = {
-    disabled,
-    'aria-label': typeof _children === 'string' ? _children : undefined,
-    'aria-disabled': isDisabled || isLoading,
-  };
+  const accessibleProps = useAccessible({
+    role: 'button',
+    children: _children,
+    isDisabled: isLoading || isDisabled,
+    isLoading,
+    isFullWidth,
+    ...props,
+  });
 
   const renderContent = () => {
     if (isLoading) {
@@ -67,7 +70,7 @@ export function useButton({
 
   return {
     ...props,
-    ...accessibleAttributes,
+    ...accessibleProps,
     className: buttonClasses,
     style: buttonStyle,
     children: renderContent(),

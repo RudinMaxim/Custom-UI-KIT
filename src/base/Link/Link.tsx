@@ -1,4 +1,4 @@
-import { Icon } from '@/components';
+import { Icon } from '@/index';
 import { Size } from '@/types/props.type';
 import { ComponentProps, ReactNode } from 'react';
 import { useLink } from './useLink';

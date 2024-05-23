@@ -6,21 +6,21 @@ import { useInput } from './useInput';
 export const Input: React.FC<InputProps> = ({
   placeholder,
   value,
-  onChange,
   disabled,
   error,
   ...props
 }) => {
-  const { inputProps, inputClasses } = useInput({ placeholder, value, onChange, disabled, error });
+  const { ...inputProps } = useInput({
+    placeholder,
+    value,
+    disabled,
+    error,
+    ...props,
+  });
 
   return (
-    <div className={styles.inputContainer}>
-      <input
-        {...inputProps}
-        {...props}
-        className={`${styles.input} ${inputClasses}`}
-      />
-      {error && <span className={styles.error}>{error}</span>}
+    <div className={`${styles.inputContainer} ${styles.error}`}>
+      <input {...inputProps} />
     </div>
   );
 };

@@ -31,7 +31,7 @@ export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
-export function Text({
+export function Typography({
   role = 'span',
   size = 'medium',
   color = colors.black['500'],

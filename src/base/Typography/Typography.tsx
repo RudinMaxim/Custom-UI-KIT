@@ -1,9 +1,9 @@
 import { colors } from '@/constants';
 import { Size, WeightRole } from '@/types/props.type';
 import { HTMLAttributes } from 'react';
-import { useText } from './useText';
+import { useTypography } from './useTypography';
 
-export type TextRole =
+export type typographyRole =
   | 'h1'
   | 'h2'
   | 'h3'
@@ -19,8 +19,8 @@ export type TextRole =
 
 export type textDecoration = 'underline' | 'line-through' | 'none';
 
-export interface TextProps extends HTMLAttributes<HTMLElement> {
-  role?: TextRole;
+export interface TypographyProps extends HTMLAttributes<HTMLElement> {
+  role?: typographyRole;
   size?: Size;
   color?: string;
   fontWeight?: WeightRole;
@@ -39,8 +39,8 @@ export function Text({
   lineHeight = 1.5,
   textDecoration = 'none',
   ...rest
-}: TextProps) {
-  const { children, Element, ...TextProps } = useText({
+}: TypographyProps) {
+  const { children, Element, ...TextProps } = useTypography({
     role,
     size,
     color,

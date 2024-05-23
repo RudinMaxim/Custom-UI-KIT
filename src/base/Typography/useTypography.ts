@@ -1,8 +1,8 @@
 import { getClasses, getStyle } from '@/helper';
-import { TextProps } from './Text';
 import styles from './Text.module.scss';
+import { TypographyProps } from './Typography';
 
-export function useText(props: TextProps) {
+export function useTypography(props: TypographyProps) {
   const {
     children,
     role,

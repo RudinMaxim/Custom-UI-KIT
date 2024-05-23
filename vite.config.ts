@@ -10,6 +10,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  css: {
+    modules: {
+      scopeBehaviour: 'local',
+    },
+    preprocessorOptions: {
+      scss: {
+      },
+    },
+  },
   build: {
     lib: {
       entry: path.resolve(__dirname, './src/index.ts'),

@@ -1,6 +1,7 @@
+import { Loader } from '@/components';
 import { getClasses, getStyle } from '@/helper';
 import { useColors } from '@/hook/useColors';
-import { Icon, Loader } from '../index';
+import { Icon } from '../index';
 import styles from './Button.module.scss';
 import { ButtonGroupProps, ButtonProps } from './type.local';
 

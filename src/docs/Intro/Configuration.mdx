@@ -1,0 +1,124 @@
+# Configuration
+
+You can flexibly customize the project configuration using the built-in <code>ConfigRuKitProvider</code> or <code>useConfig</code>. You can also override the configuration as needed.
+
+Key Features
+
+- **Centralized Configuration**: Manage your theme and configuration settings in a single location.
+- **Default Values**: Define default values for all configuration properties.
+- **Custom Overrides**: Override default values with custom configurations.
+- **Easy Access**: Access the current configuration from any component.
+- **Context Provider**: Provide custom configurations to child components.
+
+## Usage
+
+Using default values using a hook <code>useConfig</code> is the easiest way to manage your application's global theme and configuration settings.
+
+```tsx
+import { useConfig } from 'rukit';
+
+const MyComponent = () => {
+  const config = useConfig();
+
+  return (
+    <div>
+      Theme: {config.theme}
+      Font size: {config.fontSize.medium}
+    </div>
+  );
+};
+```
+
+Use <code>ConfigRuKitProvider</code> to set your settings globally and no longer pass them on to other places.
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ConfigRuKitProvider } from 'rukit';
+
+ReactDOM.render(
+  <ConfigRuKitProvider>
+    <App />
+  </ConfigRuKitProvider>,
+  document.getElementById('root')
+);
+```
+
+## Template
+
+### Step 1
+
+Create a file called <code>rukit.config.(ts|js)</code> and export an object containing your configuration settings:
+
+```tsx
+import { ConfigRuKit } from 'rukit';
+
+const rukitConfig: ConfigRuKit = {
+  // Themes
+  theme: 'light', // 'light' | 'dark' | 'highContrast'
+
+  // Fonts
+  fontSize: {
+    extraSmall: '0.875rem',
+    small: '1.125rem',
+    medium: '1.5rem',
+    large: '1.875rem',
+    extraLarge: '2.25rem',
+  },
+  fontFamily: 'Roboto, sans-serif',
+  fontWeight: 400,
+
+  // Colors
+  color: {
+    primary: '#007bff',
+    secondary: '#6c757d',
+    accent: '#28a745',
+    error: '#dc3545',
+    warning: '#ffc107',
+  },
+
+  ...
+};
+
+export { rukitConfig };
+```
+
+### Step 2
+
+Connect to your <code>ConfigRuKitProvider</code> or <code>useConfig</code> and your settings will start working:
+
+Connecting user settings to the provider
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ConfigRuKit, ConfigRuKitProvider } from 'rukit';
+import { rukitConfig } from './rukit.config';
+
+ReactDOM.render(
+  <ConfigRuKitProvider config={rukitConfig}>
+    <App />
+  </ConfigRuKitProvider>,
+  document.getElementById('root')
+);
+```
+
+Сonnecting custom settings to the hook
+
+```tsx
+import { useConfig } from 'rukit';
+import { rukitConfig } from './rukit.config';
+
+const MyComponent = () => {
+  const config = useConfig(rukitConfig);
+
+  return (
+    <div>
+      Theme: {config.theme}
+      Font size: {config.fontSize.medium}
+    </div>
+  );
+};
+```

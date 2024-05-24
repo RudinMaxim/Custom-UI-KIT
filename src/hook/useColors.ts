@@ -25,7 +25,6 @@ export function useColors(color?: string) {
   return {
     main_color: mainColor,
     contrasting_color: contrastingColor,
-    colors,
   };
 }
 

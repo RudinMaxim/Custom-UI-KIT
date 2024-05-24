@@ -1,4 +1,4 @@
-import { AriaStateProps } from "@/types/Aria.type";
+import { AriaStateProps } from "@/types/AriaState";
 import { useAriaRole } from "./useAriaRole";
 
 /**

@@ -1,6 +1,4 @@
-export type Size = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-
-export type WeightRole =
+export type Weight =
   | 'normal'
   | 'bold'
   | 'bolder'

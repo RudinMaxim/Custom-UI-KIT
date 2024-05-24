@@ -1,14 +1,24 @@
 import { ReactNode } from 'react';
-import { ConfigContext, ConfigRuKit } from './ConfigContext';
+import {
+  ConfigRuKit,
+  ConfigRuKitContext,
+  defaultRuKitConfig,
+} from './ConfigContext';
 
 export default function ConfigRuKitProvider({
   children,
   config,
 }: {
   children: ReactNode;
-  config: ConfigRuKit;
+  config?: ConfigRuKit;
 }) {
+  const mergedConfig = { ...defaultRuKitConfig, ...config };
+
+  const configToUse = config || mergedConfig;
+
   return (
-    <ConfigContext.Provider value={config}>{children}</ConfigContext.Provider>
+    <ConfigRuKitContext.Provider value={configToUse}>
+      {children}
+    </ConfigRuKitContext.Provider>
   );
 }

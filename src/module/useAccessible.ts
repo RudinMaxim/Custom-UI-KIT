@@ -1,4 +1,4 @@
-import { AriaStateProps } from '@/types/Aria.type';
+import { AriaStateProps } from '@/types/AriaState';
 import React from 'react';
 import { useAriaAttributes } from '../hook/useAriaAttributes';
 import { useTabIndex } from '../hook/useTabIndex';

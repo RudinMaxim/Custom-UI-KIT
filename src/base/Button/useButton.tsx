@@ -1,13 +1,14 @@
 import { Loader } from '@/components';
+import { useConfig } from '@/config';
 import { getClasses, getStyle } from '@/helper';
-import { useAccessible } from '@/hook/useAccessible';
 import { useColors } from '@/hook/useColors';
+import { useAccessible } from '@/module';
 import { Icon } from '../index';
 import styles from './Button.module.scss';
 import { ButtonGroupProps, ButtonProps } from './type.local';
 
 export function useButton({
-  color,
+  color: customColor,
   variant,
   size,
   isLoading = false,
@@ -20,7 +21,11 @@ export function useButton({
   iconPosition = 'left',
   ...props
 }: ButtonProps) {
-  const { main_color, contrasting_color } = useColors(color);
+  const config = useConfig({ fontWeight: '600' });
+
+  console.log(config);
+
+  const { main_color, contrasting_color } = useColors(customColor);
   const hasIcon = !_children && Boolean(icon);
 
   const buttonClasses = getClasses(

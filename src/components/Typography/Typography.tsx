@@ -1,5 +1,4 @@
-import { colors } from '@/constants';
-import { Size, WeightRole } from '@/types/props.type';
+import { Size, TWeights, colors, sizes } from '@/token';
 import { HTMLAttributes } from 'react';
 import { useTypography } from './useTypography';
 
@@ -23,7 +22,7 @@ export interface TypographyProps extends HTMLAttributes<HTMLElement> {
   role?: typographyRole;
   size?: Size;
   color?: string;
-  fontWeight?: WeightRole;
+  fontWeight?: TWeights;
   lineHeight?: number;
   textDecoration?: textDecoration;
   className?: string;
@@ -33,9 +32,9 @@ export interface TypographyProps extends HTMLAttributes<HTMLElement> {
 
 export function Typography({
   role = 'span',
-  size = 'medium',
+  size = sizes.medium,
   color = colors.black['500'],
-  fontWeight = 'normal',
+  fontWeight = 400,
   lineHeight = 1.5,
   textDecoration = 'none',
   ...rest

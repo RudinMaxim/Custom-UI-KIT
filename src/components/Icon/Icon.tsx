@@ -1,4 +1,4 @@
-import { colors } from '@/constants';
+import { colors } from '@/token';
 import React, { ComponentProps } from 'react';
 import { useIcon } from './useIcon';
 

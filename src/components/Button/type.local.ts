@@ -1,4 +1,4 @@
-import { Size } from '@/types/size';
+import { Size } from '@/token';
 import { ComponentProps } from 'react';
 import { IconProps } from '../Icon/Icon';
 

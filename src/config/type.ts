@@ -1,9 +1,9 @@
 import {
-  BorderRadius,
-  Device,
   Scale,
   Shape,
   Size,
+  TBorderRadius,
+  TDevice,
   TFontSizes,
   TSpacing,
   animations,
@@ -17,7 +17,6 @@ import {
 } from '@/token';
 
 export interface ConfigRuKit {
-  theme?: 'light' | 'dark' | 'highContrast';
   size?: keyof Size;
   fontSize?: TFontSizes;
   fontFamily?: string;
@@ -27,13 +26,19 @@ export interface ConfigRuKit {
   color?: {
     primary: string;
     secondary: string;
-    accent?: string;
-    error?: string;
-    warning?: string;
+    accent: string;
+    error: string;
+    warning: string;
+    background: string;
+    surface: string;
+    text: {
+      primary: string;
+      secondary: string;
+    };
   };
   spacing?: TSpacing;
-  borderRadius?: BorderRadius;
-  breakpoints?: Record<Device, number>;
+  borderRadius?: TBorderRadius;
+  breakpoints?: Record<TDevice, number>;
   boxShadow?: string | keyof typeof shadows;
   opacity?: Record<string, number>;
   transition?: string | keyof typeof transitions;

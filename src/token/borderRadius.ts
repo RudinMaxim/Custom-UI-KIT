@@ -1,11 +1,11 @@
 import { Size } from '.';
 
-export interface BorderRadius extends Size {
+export interface TBorderRadius extends Size {
   none: '0';
   full: '50%';
 }
 
-export const borderRadius: BorderRadius = {
+export const borderRadius: TBorderRadius = {
   extraSmall: '0.25rem',
   small: '0.5rem',
   medium: '0.75rem',

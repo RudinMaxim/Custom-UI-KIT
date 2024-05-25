@@ -3,39 +3,40 @@ import { ReactNode, createContext, useContext } from 'react';
 import { DefaultRuKitConfig } from './index';
 import { ConfigRuKit } from './type';
 
-export const ConfigRuKitContext = createContext<ConfigRuKit | undefined>(
-  undefined
+export const ConfigRuKitContext = createContext<ConfigRuKit>(
+  DefaultRuKitConfig.light
 );
 
-export const useConfig = (customConfig?: ConfigRuKit): ConfigRuKit => {
-  const config = useContext(ConfigRuKitContext);
-  const mergedConfig = config || { ...DefaultRuKitConfig, ...customConfig };
-
-  return mergedConfig;
+export const useConfigRuKit = (config?: Partial<ConfigRuKit>): ConfigRuKit => {
+  return {
+    ...useContext(ConfigRuKitContext),
+    ...config,
+  };
 };
 
-export default function ConfigRuKitProvider({
+export function ProviderRuKit({
   children,
-  customConfig,
+  config,
 }: {
   children: ReactNode;
-  customConfig?: ConfigRuKit;
+  config?: Partial<ConfigRuKit>;
 }) {
-  const config = useContext(ConfigRuKitContext);
-
-  const mergedConfig = config || { ...DefaultRuKitConfig, ...customConfig };
-
   return (
-    <ConfigRuKitContext.Provider value={mergedConfig}>
+    <ConfigRuKitContext.Provider
+      value={{
+        ...useContext(ConfigRuKitContext),
+        ...config,
+      }}
+    >
       {children}
     </ConfigRuKitContext.Provider>
   );
 }
 
-export const withConfig =
-  (config: ConfigRuKit = DefaultRuKitConfig) =>
+export const withConfigRuKit =
+  (config: Partial<ConfigRuKit> = DefaultRuKitConfig.light) =>
   (Story: StoryFn) => (
-    <ConfigRuKitProvider customConfig={config}>
+    <ProviderRuKit config={config}>
       <Story />
-    </ConfigRuKitProvider>
+    </ProviderRuKit>
   );

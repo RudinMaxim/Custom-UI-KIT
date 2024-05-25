@@ -1,4 +1,4 @@
-import { colors } from '@/constants';
+import { colors } from '@/token';
 import React, { useRef } from 'react';
 import { ButtonGroupProps, ButtonLinkProps, ButtonProps } from './type.local';
 import { useButton, useButtonGroup } from './useButton';
@@ -42,7 +42,7 @@ export function Button({
     isFullWidth,
     iconPosition,
     ...props,
-  }, refButton);
+  });
 
   return <button {...buttonProps} ref={refButton}>{children}</button>;
 }

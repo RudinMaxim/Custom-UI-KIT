@@ -1,4 +1,4 @@
-import { colors } from '@/constants/colors';
+import { colors } from '@/token';
 import React, { ComponentProps } from 'react';
 import { useLoader } from './useLoader';
 

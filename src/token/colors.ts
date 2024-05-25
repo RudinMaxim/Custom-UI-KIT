@@ -1,3 +1,17 @@
+export interface ColorPalette {
+  primary: string;
+  secondary: string;
+  accent?: string;
+  error?: string;
+  warning?: string;
+  background?: string;
+  surface?: string;
+  text?: {
+    primary?: string;
+    secondary?: string;
+  };
+}
+
 type Color = Record<string, Record<string, string>>;
 
 export const colors: Color = {

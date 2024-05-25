@@ -1,9 +1,9 @@
 import { Loader } from '@/components';
-import { useConfig } from '@/config';
+import { useConfigRuKit } from '@/config';
 import { getClasses, getStyle } from '@/helper';
 import { useColors } from '@/hook/useColors';
 import { useAccessible, useStyled } from '@/module';
-import { Icon } from '../index';
+import { Icon } from '../../base/index';
 import styles from './Button.module.scss';
 import { ButtonGroupProps, ButtonProps } from './type.local';
 
@@ -22,9 +22,8 @@ export function useButton(
     iconPosition = 'left',
     ...props
   }: ButtonProps,
-  refButton: React.Ref<HTMLButtonElement>
 ) {
-  const config = useConfig();
+  const config = useConfigRuKit();
 
   console.log(config);
 

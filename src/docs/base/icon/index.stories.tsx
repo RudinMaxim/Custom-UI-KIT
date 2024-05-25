@@ -1,4 +1,4 @@
-import { Icon } from '@/base/Icon/Icon';
+import { Icon } from '@/components/Icon/Icon';
 import { Icons } from '@/constants/IconMap';
 import type { Meta, StoryObj } from '@storybook/react';
 

@@ -1,3 +1,4 @@
 export * from './ConfigContext';
-export * from './ConfigProvider';
+export * from './DefaultConfig';
+export * from './type';
 

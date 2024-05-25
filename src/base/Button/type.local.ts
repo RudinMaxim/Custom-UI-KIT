@@ -1,9 +1,9 @@
-import { Size } from '@/types/props.type';
+import { Size } from '@/types/size';
 import { ComponentProps } from 'react';
 import { IconProps } from '../Icon/Icon';
 
-type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link';
-type ButtonPosition = 'left' | 'right';
+export type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'link';
+export type ButtonPosition = 'left' | 'right';
 
 export interface ButtonProps extends ComponentProps<'button'> {
   /** The variant of the button (solid, outline, or ghost) */

@@ -1,4 +1,6 @@
-export const colors = {
+type Color = Record<string, Record<string, string>>;
+
+export const colors: Color = {
   red: {
     100: '#FFCDD2',
     200: '#EF9A9A',

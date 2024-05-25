@@ -2,26 +2,29 @@ import { Loader } from '@/components';
 import { useConfig } from '@/config';
 import { getClasses, getStyle } from '@/helper';
 import { useColors } from '@/hook/useColors';
-import { useAccessible } from '@/module';
+import { useAccessible, useStyled } from '@/module';
 import { Icon } from '../index';
 import styles from './Button.module.scss';
 import { ButtonGroupProps, ButtonProps } from './type.local';
 
-export function useButton({
-  color: customColor,
-  variant,
-  size,
-  isLoading = false,
-  isDisabled = false,
-  isFullWidth = false,
-  style: _style,
-  className: _className,
-  children: _children,
-  icon,
-  iconPosition = 'left',
-  ...props
-}: ButtonProps) {
-  const config = useConfig({ fontWeight: '600' });
+export function useButton(
+  {
+    color: customColor,
+    variant,
+    size,
+    isLoading = false,
+    isDisabled = false,
+    isFullWidth = false,
+    style: _style,
+    className: _className,
+    children: _children,
+    icon,
+    iconPosition = 'left',
+    ...props
+  }: ButtonProps,
+  refButton: React.Ref<HTMLButtonElement>
+) {
+  const config = useConfig();
 
   console.log(config);
 
@@ -48,6 +51,23 @@ export function useButton({
     isLoading,
     isFullWidth,
     ...props,
+  });
+
+  const { className, style } = useStyled({
+    styles: {
+      button: styles.button,
+      'variant-variant': styles.variant,
+      'size-size': styles.size,
+      'sizeWithIcon-sizeWithIcon': hasIcon
+        ? styles.sizeWithIcon[size]
+        : undefined,
+      'fullWidth-fullWidth': isFullWidth ? styles.fullWidth : undefined,
+    },
+    className: _className,
+    style: {
+      '--button-content-color': contrasting_color,
+      '--button-background-color': main_color,
+    },
   });
 
   const renderContent = () => {

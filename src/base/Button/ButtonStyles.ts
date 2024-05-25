@@ -27,13 +27,20 @@ interface ButtonBaseStyles {
   fullWidth: string;
 }
 
-export const useButtonBaseStyles = (
-  config: Pick<ConfigRuKit, 'fontSize' | 'spacing' | 'borderRadius'>
-): ButtonBaseStyles => {
+export const useButtonBaseStyles = (config: ConfigRuKit): ButtonBaseStyles => {
   const { fontSize, spacing, borderRadius } = config;
-
-  const { small } = spacing;
-  const { small: smallRadius, medium: mediumRadius } = borderRadius;
+  //@ts-expect-error
+  const { extraSmall, small, medium, large, extraLarge } = fontSize;
+  //@ts-expect-error
+  const { extraSmall: extraSmallSpacing, small: smallSpacing } = spacing;
+  const {
+    //@ts-expect-error
+    extraSmall: extraSmallRadius,
+    //@ts-expect-error
+    small: smallRadius,
+    //@ts-expect-error
+    medium: mediumRadius,
+  } = borderRadius;
 
   return {
     root: styles.button,
@@ -46,55 +53,55 @@ export const useButtonBaseStyles = (
     },
     size: {
       extraSmall: `
-        padding: ${small} ${small};
-        font-size: ${fontSize.extraSmall};
-        border-radius: ${smallRadius};
+        padding: ${extraSmallSpacing} ${extraSmallSpacing};
+        font-size: ${extraSmall};
+        border-radius: ${extraSmallRadius};
         min-height: 2rem;
       `,
       small: `
-        padding: 0.75rem 1.25rem;
-        font-size: ${fontSize.small};
+        padding: ${smallSpacing} ${small};
+        font-size: ${small};
         border-radius: ${smallRadius};
         min-height: 2.125rem;
       `,
       medium: `
-        padding: 1rem 1.5rem;
-        font-size: ${fontSize.medium};
+        padding: ${medium} ${large};
+        font-size: ${medium};
         border-radius: ${mediumRadius};
         min-height: 2.25rem;
       `,
       large: `
-        padding: 1.25rem 1.75rem;
-        font-size: ${fontSize.large};
+        padding: ${large} ${extraLarge};
+        font-size: ${large};
         border-radius: ${mediumRadius};
         min-height: 2.5rem;
       `,
       extraLarge: `
-        padding: 1.5rem 2rem;
-        font-size: ${fontSize.extraLarge};
+        padding: ${extraLarge} ${extraLarge};
+        font-size: ${extraLarge};
         border-radius: ${mediumRadius};
         min-height: 2.75rem;
       `,
     },
     sizeWithIcon: {
       extraSmall: `
-        padding: 0.5rem 1rem;
-        border-radius: ${smallRadius};
+        padding: ${extraSmallSpacing} ${extraSmallSpacing};
+        border-radius: ${extraSmallRadius};
       `,
       small: `
-        padding: 0.75rem;
+        padding: ${smallSpacing};
         border-radius: ${smallRadius};
       `,
       medium: `
-        padding: 1rem;
+        padding: ${medium};
         border-radius: ${mediumRadius};
       `,
       large: `
-        padding: 1.25rem;
+        padding: ${large};
         border-radius: ${mediumRadius};
       `,
       extraLarge: `
-        padding: 1.5rem;
+        padding: ${extraLarge};
         border-radius: ${mediumRadius};
       `,
     },
@@ -108,8 +115,8 @@ export const useButtonModifiers = ({
   sizeWithIcon,
   fullWidth,
 }: Partial<ButtonBaseStyles>) => ({
-  variant: variant ?? undefined,
+  variant: variant ? `variant-${variant}` : undefined,
   size: size ? `size-${size}` : undefined,
-  sizeWithIcon: sizeWithIcon ? `sizeWithIcon-${size}` : undefined,
+  sizeWithIcon: sizeWithIcon ? `sizeWithIcon-${sizeWithIcon}` : undefined,
   fullWidth: fullWidth ? 'fullWidth' : undefined,
 });

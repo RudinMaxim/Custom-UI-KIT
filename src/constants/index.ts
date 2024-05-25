@@ -1,5 +1,5 @@
-import { colors } from './colors';
+import { colors } from '../token/colors';
 import { Icons } from './IconMap';
 
-export { colors, Icons };
+export { Icons, colors };
 

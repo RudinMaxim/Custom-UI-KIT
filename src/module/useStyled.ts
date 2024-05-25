@@ -1,36 +1,44 @@
 import clsx from 'clsx';
 import { CSSProperties, useMemo } from 'react';
 
+type StyleValue =
+  | string
+  | CSSProperties
+  | (() => string)
+  | (() => CSSProperties);
+
 interface UseStyledProps<T extends object> {
-  baseStyles: T;
-  modifiers?: Partial<T>;
+  styles: T;
   className?: string;
-  style?: CSSProperties;
+  style?: Record<string, StyleValue>;
 }
 
 export function useStyled<T extends object>({
-  baseStyles,
-  modifiers = {},
+  styles,
   className,
   style,
 }: UseStyledProps<T>): { className: string; style: CSSProperties } {
   const computedStyles = useMemo(() => {
-    return Object.entries(baseStyles).reduce((acc, [key, value]) => {
-      const modifier = modifiers[key as keyof typeof modifiers];
-      acc = {
-        ...acc,
-        ...(modifier
-          ? {
-              [key]: typeof value === 'function'
-                ? value(modifier)
-                : { ...value, ...modifier },
-            }
-          : { [key]: value }),
-      };
-      return acc;
-    }, {} as T);
-  }, [baseStyles, modifiers]);
-
+    return Object.entries(styles).reduce(
+      (acc, [key, value]) => {
+        if (typeof value === 'object' && !Array.isArray(value)) {
+          const modifiers = Object.entries(value).reduce(
+            (modAcc, [modKey, modValue]) => {
+              modAcc[`${key}-${modKey}`] =
+                typeof modValue === 'function' ? modValue() : modValue;
+              return modAcc;
+            },
+            {} as Record<string, string | CSSProperties>
+          );
+          acc = { ...acc, ...modifiers };
+        } else {
+          acc[key] = value;
+        }
+        return acc;
+      },
+      {} as Record<string, string | CSSProperties>
+    );
+  }, [styles]);
 
   const computedClassName = useMemo(
     () =>
@@ -46,8 +54,17 @@ export function useStyled<T extends object>({
     [computedStyles, className]
   );
 
+  const computedStyle = useMemo(() => {
+    if (!style) return {};
+
+    return Object.entries(style).reduce((acc, [key, value]) => {
+      acc[key] = typeof value === 'function' ? value() : value;
+      return acc;
+    }, {} as CSSProperties);
+  }, [style]);
+
   return {
     className: computedClassName,
-    style: { ...computedStyles, ...style },
+    style: { ...computedStyles, ...computedStyle },
   };
 }

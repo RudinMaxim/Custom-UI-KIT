@@ -1,5 +1,5 @@
 import { colors } from '@/constants';
-import React from 'react';
+import React, { useRef } from 'react';
 import { ButtonGroupProps, ButtonLinkProps, ButtonProps } from './type.local';
 import { useButton, useButtonGroup } from './useButton';
 
@@ -25,13 +25,14 @@ import { useButton, useButtonGroup } from './useButton';
 export function Button({
   color = colors.black['500'],
   variant = 'solid',
-  size = 'small',
+  size,
   isLoading = false,
   isDisabled = false,
   isFullWidth = false,
   iconPosition = 'left',
   ...props
 }: ButtonProps): React.JSX.Element {
+  const refButton = useRef()
   const { children, ...buttonProps } = useButton({
     variant,
     color,
@@ -41,9 +42,9 @@ export function Button({
     isFullWidth,
     iconPosition,
     ...props,
-  });
+  }, refButton);
 
-  return <button {...buttonProps}>{children}</button>;
+  return <button {...buttonProps} ref={refButton}>{children}</button>;
 }
 
 /**

@@ -1,4 +1,3 @@
-// Loader.stories.tsx
 import { Loader } from '@/components/Loader/Loader';
 import type { Meta, StoryObj } from '@storybook/react';
 

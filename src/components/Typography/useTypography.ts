@@ -1,6 +1,5 @@
-import { getClasses, getStyle } from '@/helper';
+// import { getClasses, getStyle } from '@/helper';
 import { TypographyProps } from './Typography';
-import styles from './Typography.module.scss';
 
 export function useTypography(props: TypographyProps) {
   const {
@@ -16,22 +15,22 @@ export function useTypography(props: TypographyProps) {
     ...rest
   } = props;
 
-  const className = getClasses(styles.text, styles[`text__${size}`], _classe);
+  // const className = getClasses(styles.text, styles[`text__${size}`], _classe);
 
-  const style = getStyle({
-    color,
-    lineHeight,
-    fontWeight,
-    textDecoration,
-    ..._style,
-  });
+  // const style = getStyle({
+  //   color,
+  //   lineHeight,
+  //   fontWeight,
+  //   textDecoration,
+  //   ..._style,
+  // });
 
   return {
     ...rest,
     role,
     Element: role ? role : 'span',
     children,
-    className,
-    style,
+    className: _classe,
+    style: _style,
   };
 }

@@ -1,5 +1,5 @@
+import { Icons } from '@/assets';
 import { Icon } from '@/components/Icon/Icon';
-import { Icons } from '@/constants/IconMap';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const iconNames = Object.keys(Icons);

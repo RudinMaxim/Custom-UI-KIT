@@ -1,22 +1,22 @@
 import clsx from 'clsx';
 import { CSSProperties, useMemo } from 'react';
 
-type StyleValue =
-  | string
-  | CSSProperties
-  | (() => string)
-  | (() => CSSProperties);
+// type StyleValue =
+//   | string
+//   | CSSProperties
+//   | (() => string)
+//   | (() => CSSProperties);
 
 interface UseStyledProps<T extends object> {
   styles: T;
   className?: string;
-  style?: Record<string, StyleValue>;
+  // variables?: Record<string, StyleValue>;
 }
 
 export function useStyled<T extends object>({
   styles,
   className,
-  style,
+  // variables,
 }: UseStyledProps<T>): { className: string; style: CSSProperties } {
   const computedStyles = useMemo(() => {
     return Object.entries(styles).reduce(
@@ -54,17 +54,8 @@ export function useStyled<T extends object>({
     [computedStyles, className]
   );
 
-  const computedStyle = useMemo(() => {
-    if (!style) return {};
-
-    return Object.entries(style).reduce((acc, [key, value]) => {
-      acc[key] = typeof value === 'function' ? value() : value;
-      return acc;
-    }, {} as CSSProperties);
-  }, [style]);
-
   return {
     className: computedClassName,
-    style: { ...computedStyles, ...computedStyle },
+    style: computedStyles,
   };
 }

@@ -14,8 +14,8 @@
  * @returns The appropriate ARIA role for the element, or `undefined` if no role
  * should be assigned.
  */
-export const useAriaRole = (
-  elementType: React.ElementType,
+export const useAriaRole = <T extends React.ElementType>(
+  elementType: T,
   role?: string
 ): string | undefined => {
   if (role) {

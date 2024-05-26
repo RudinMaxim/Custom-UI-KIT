@@ -1,47 +1,46 @@
-import { Loader } from '@/components';
-import { useConfigRuKit } from '@/config';
-import { getClasses, getStyle } from '@/helper';
-import { useColors } from '@/hook/useColors';
-import { useAccessible, useStyled } from '@/module';
-import { Icon } from '../../base/index';
+import { Icon, Loader } from '@/components';
+import { ConfigRuKitContext } from '@/config';
+import { useAccessible, useColors, useStyled } from '@/hook';
+import { useContext } from 'react';
 import styles from './Button.module.scss';
-import { ButtonGroupProps, ButtonProps } from './type.local';
+import { ButtonProps } from './type.local';
 
 export function useButton(
-  {
+  props: ButtonProps,
+  ref: React.RefObject<HTMLButtonElement>
+) {
+  const {
     color: customColor,
     variant,
     size,
-    isLoading = false,
-    isDisabled = false,
-    isFullWidth = false,
+    isLoading,
+    isDisabled,
+    isFullWidth,
     style: _style,
     className: _className,
     children: _children,
     icon,
     iconPosition = 'left',
-    ...props
-  }: ButtonProps,
-) {
-  const config = useConfigRuKit();
+    ...propsButton
+  } = props;
+  const config = useContext(ConfigRuKitContext)
 
-  console.log(config);
 
   const { main_color, contrasting_color } = useColors(customColor);
-  const hasIcon = !_children && Boolean(icon);
 
-  const buttonClasses = getClasses(
-    styles.button,
-    styles[`button__${variant}`],
-    styles[`button__${size}${hasIcon ? '-icon' : ''}`],
-    isFullWidth ? styles['button__full-width'] : '',
-    _className
-  );
+  
+  // const buttonClasses = getClasses(
+  //   styles.button,
+  //   styles[`button__${variant}`],
+  //   styles[`button__${size}${hasIcon ? '-icon' : ''}`],
+  //   isFullWidth ? styles['button__full-width'] : '',
+  //   _className
+  // );
 
-  const buttonStyle = getStyle({ ..._style }, [
-    ['--button-content-color', contrasting_color],
-    ['--button-background-color', main_color],
-  ]);
+  // const buttonStyle = getStyle({ ..._style }, [
+  //   ['--button-content-color', contrasting_color],
+  //   ['--button-background-color', main_color],
+  // ]);
 
   const accessibleProps = useAccessible({
     role: 'button',
@@ -61,12 +60,11 @@ export function useButton(
         ? styles.sizeWithIcon[size]
         : undefined,
       'fullWidth-fullWidth': isFullWidth ? styles.fullWidth : undefined,
-    },
-    className: _className,
-    style: {
       '--button-content-color': contrasting_color,
       '--button-background-color': main_color,
+      ..._style,
     },
+    className: _className,
   });
 
   const renderContent = () => {
@@ -93,30 +91,30 @@ export function useButton(
   };
 
   return {
-    ...props,
+    ...propsButton,
     ...accessibleProps,
-    className: buttonClasses,
-    style: buttonStyle,
+    className,
+    style,
     children: renderContent(),
   };
 }
 
-export function useButtonGroup(props: ButtonGroupProps) {
-  const {
-    children,
-    variant,
-    size,
-    isAttached,
-    className: _className,
-    ...rest
-  } = props;
+// export function useButtonGroup(props: ButtonGroupProps) {
+//   const {
+//     children,
+//     variant,
+//     size,
+//     isAttached,
+//     className: _className,
+//     ...rest
+//   } = props;
 
-  const className = getClasses(
-    styles['button-group'],
-    styles[`button-group__${variant}`],
-    styles[`button-group__${size}`],
-    isAttached ? styles['button__group__attached'] : '',
-    _className
-  );
-  return { children, className, ...rest };
-}
+//   const className = getClasses(
+//     styles['button-group'],
+//     styles[`button-group__${variant}`],
+//     styles[`button-group__${size}`],
+//     isAttached ? styles['button__group__attached'] : '',
+//     _className
+//   );
+//   return { children, className, ...rest };
+// }

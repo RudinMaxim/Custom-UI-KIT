@@ -28,41 +28,6 @@
   font-size: 1rem;
   user-select: none;
 
-  /* Size variants */
-  &__extra-small {
-    padding: 0.5rem 1rem;
-    font-size: var(--font-size-xs);
-    border-radius: var(--border-radius-sm);
-    min-height: 2rem;
-  }
-
-  &__small {
-    padding: 0.75rem 1.25rem;
-    font-size: var(--font-size-sm);
-    border-radius: var(--border-radius-sm);
-    min-height: 2.125rem;
-  }
-
-  &__medium {
-    padding: 1rem 1.5rem;
-    font-size: var(--font-size-md);
-    border-radius: var(--border-radius-md);
-    min-height: 2.25rem;
-  }
-
-  &__large {
-    padding: 1.25rem 1.75rem;
-    font-size: var(--font-size-lg);
-    border-radius: var(--border-radius-md);
-    min-height: 2.5rem;
-  }
-
-  &__extra-large {
-    padding: 1.5rem 2rem;
-    font-size: var(--font-size-xl);
-    border-radius: var(--border-radius-md);
-    min-height: 2.75rem;
-  }
   
    /* Size icon variants */
   &__extra-small-icon {

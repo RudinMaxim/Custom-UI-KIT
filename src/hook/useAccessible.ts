@@ -1,6 +1,7 @@
 import React from 'react';
-import { useAriaAttributes } from '../hook/useAriaAttributes';
-import { useTabIndex } from '../hook/useTabIndex';
+import { useAriaAttributes } from './useAriaAttributes';
+import { useAriaRole } from './useAriaRole';
+import { useTabIndex } from './useTabIndex';
 
 export type AriaStateProps<T extends React.ElementType> =
   React.ComponentProps<T> & {
@@ -25,9 +26,14 @@ export type AriaStateProps<T extends React.ElementType> =
 
 export const useAccessible = <E extends React.ElementType>(
   props: AriaStateProps<E>
-) => {
-  const tabIndex = useTabIndex<E>(props);
+): React.ComponentProps<E> => {
   const accessibleProps = useAriaAttributes<E>(props);
+  const tabIndex = useTabIndex<E>(props);
+  const calculatedRole = useAriaRole<E>(props.type, props.role);
+
+  if (calculatedRole !== undefined) {
+    accessibleProps['role'] = calculatedRole;
+  }
 
   if (tabIndex !== undefined) {
     accessibleProps['tabIndex'] = tabIndex;

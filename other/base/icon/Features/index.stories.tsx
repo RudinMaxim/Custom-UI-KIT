@@ -1,5 +1,5 @@
-import { Icons } from '@/constants';
-import { Icon } from '@/index';
+import { Icons } from '@/assets/Icons';
+import { Icon } from '@/components';
 import { Story } from '../index.stories';
 
 export default {};

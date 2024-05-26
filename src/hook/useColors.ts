@@ -1,4 +1,4 @@
-import { colors } from '@/constants';
+import { colors } from "@/token";
 
 const colorCache = new Map<string, string>();
 

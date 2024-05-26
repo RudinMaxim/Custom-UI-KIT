@@ -10,7 +10,7 @@ export interface ButtonProps extends ComponentProps<'button'> {
   variant?: ButtonVariant;
 
   /** The size of the button ('extra-small', 'small', 'medium', 'large', 'extra-large') */
-  size?: Size;
+  size?: keyof Size;
 
   /** The color of the button in all recording formats */
   color?: string;
@@ -44,7 +44,7 @@ export interface ButtonGroupProps extends ComponentProps<'div'> {
   variant?: ButtonVariant;
 
   /** The size of the buttons in the group ('extra-small', 'small', 'medium', 'large', 'extra-large') */
-  size?: Size;
+  size?: keyof Size;
 
   /** Additional styles to apply to the button group */
   style?: React.CSSProperties;

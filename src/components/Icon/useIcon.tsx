@@ -1,8 +1,6 @@
-import { Icons } from '@/constants';
-import { getClasses, getStyle } from '@/helper';
+import { Icons } from '@/assets/Icons';
 import React from 'react';
 import { IconProps } from './Icon';
-import styles from './Icon.module.scss';
 
 export function useIcon(props: IconProps) {
   const {
@@ -17,15 +15,15 @@ export function useIcon(props: IconProps) {
     ...rest
   } = props;
 
-  const style = getStyle({
-    color,
-    width: size,
-    height: size,
-    ..._style,
-  });
+  // const style = getStyle({
+  //   color,
+  //   width: size,
+  //   height: size,
+  //   ..._style,
+  // });
 
-  const className = getClasses(styles.icon, _className);
-  const textClassName = getClasses(styles.text, styles[`text-${textPosition}`]);
+  // const className = getClasses(styles.icon, _className);
+  // const textClassName = getClasses(styles.text, styles[`text-${textPosition}`]);
 
   const getIconContent = (): JSX.Element | null => {
     if (customIcon && React.isValidElement(customIcon)) {
@@ -43,12 +41,12 @@ export function useIcon(props: IconProps) {
   return {
     ...rest,
     children: (
-      <div className={className} style={style}>
+      <div className={_className} style={_style}>
         {getIconContent()}
-        {text && <span className={textClassName}>{text}</span>}
+        {text && <span className={_className}>{text}</span>}
       </div>
     ),
-    className,
-    style,
+    className: _className,
+    style: _style,
   };
 }

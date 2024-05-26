@@ -1,5 +1,4 @@
-import { AriaStateProps } from "@/types/AriaState";
-import { useAriaRole } from "./useAriaRole";
+import { AriaStateProps } from './useAccessible';
 
 /**
  * Generates a React component with accessible attributes based on the provided element type.
@@ -28,7 +27,6 @@ export const useAriaAttributes = <T extends React.ElementType>(
     valueText,
     children,
     icon,
-    role,
     type,
     'aria-label': ariaLabel,
     'aria-labelledby': ariaLabelledBy,
@@ -40,11 +38,7 @@ export const useAriaAttributes = <T extends React.ElementType>(
     ...otherProps,
   } as React.ComponentProps<T>;
 
-  const elementType = (type as React.ElementType) ?? role;
-  const calculatedRole = useAriaRole(elementType, role);
-  if (calculatedRole) {
-    accessibleProps['role'] = calculatedRole;
-  }
+  const elementType = type as React.ElementType;
 
   const elementsWithoutAriaLabel = [
     'caption',

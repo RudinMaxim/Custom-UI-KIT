@@ -1,6 +1,6 @@
 # Configuration
 
-You can flexibly customize the project configuration using the built-in <code>ConfigRuKitProvider</code> or <code>useConfig</code>. You can also override the configuration as needed.
+You can flexibly customize the project configuration using the built-in <code>ConfigRuKitProvider</code>. You can also override the configuration as needed.
 
 Key Features
 
@@ -12,24 +12,7 @@ Key Features
 
 ## Usage
 
-Using default values using a hook <code>useConfig</code> is the easiest way to manage your application's global theme and configuration settings.
-
-```tsx
-import { useConfig } from 'rukit';
-
-const MyComponent = () => {
-  const config = useConfig();
-
-  return (
-    <div>
-      Theme: {config.theme}
-      Font size: {config.fontSize.medium}
-    </div>
-  );
-};
-```
-
-Use <code>ConfigRuKitProvider</code> to set your settings globally and no longer pass them on to other places.
+Using <code>ConfigRuKitProvider</code> to set your settings globally and no longer pass them on to other places.
 
 ```tsx
 import React from 'react';
@@ -55,9 +38,6 @@ Create a file called <code>rukit.config.(ts|js)</code> and export an object cont
 import { ConfigRuKit } from 'rukit';
 
 const rukitConfig: ConfigRuKit = {
-  // Themes
-  theme: 'light', // 'light' | 'dark' | 'highContrast'
-
   // Fonts
   fontSize: {
     extraSmall: '0.875rem',
@@ -68,16 +48,6 @@ const rukitConfig: ConfigRuKit = {
   },
   fontFamily: 'Roboto, sans-serif',
   fontWeight: 400,
-
-  // Colors
-  color: {
-    primary: '#007bff',
-    secondary: '#6c757d',
-    accent: '#28a745',
-    error: '#dc3545',
-    warning: '#ffc107',
-  },
-
   ...
 };
 
@@ -103,22 +73,4 @@ ReactDOM.render(
   </ConfigRuKitProvider>,
   document.getElementById('root')
 );
-```
-
-Сonnecting custom settings to the hook
-
-```tsx
-import { useConfig } from 'rukit';
-import { rukitConfig } from './rukit.config';
-
-const MyComponent = () => {
-  const config = useConfig(rukitConfig);
-
-  return (
-    <div>
-      Theme: {config.theme}
-      Font size: {config.fontSize.medium}
-    </div>
-  );
-};
 ```

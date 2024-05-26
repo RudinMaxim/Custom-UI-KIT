@@ -1,4 +1,4 @@
-import { AriaStateProps } from '@/types/AriaState';
+import { AriaStateProps } from "./useAccessible";
 
 /**
  * Determines the appropriate `tabIndex` value for an element based on its props.
